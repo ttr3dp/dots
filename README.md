@@ -31,4 +31,4 @@ Managed as a bare git repo.
 
 ### Screenshot ###
 
-![screenshot](https://github.com/ttr3dp/dots/blob/master/scrot.png)
+![screenshot](https://github.com/ttr3dp/dots/blob/master/.cache/scrot.png)
