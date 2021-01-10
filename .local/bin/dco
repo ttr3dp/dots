@@ -1,0 +1,16 @@
+#!/bin/sh
+GREEN="\033[32m"
+ORANGE="\033[33m"
+RED="\033[31m"
+NC='\033[0m'
+port_output=$(docker-compose ps $1 | awk '{ for(i=1;i<=NF;i++) { if($i ~ /->/) {print $i} } }')
+if [[ $port_output == *"->"* ]]
+then
+    url=$(echo $port_output | awk -v FS='->' '{print $1}')
+    [ ! -z "$2" ] && url="${2}:$(echo $url | awk -v FS=':' '{print $2}')"
+    url="http://${url}"
+    echo -e "${GREEN}Opening ${ORANGE}$1${NC} ${GREEN}service (${NC}${url}${GREEN})...${NC}"
+    xdg-open $url
+else
+    echo -e "${RED}Nothing to open for${NC} ${ORANGE}$1${NC} ${RED}service${NC}"
+fi

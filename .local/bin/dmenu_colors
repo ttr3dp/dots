@@ -1,0 +1,3 @@
+#!/bin/sh
+
+dmenu_run -sb "$(get_color 2)" -nb "$(get_color 0)" -nf "$(get_color 7)" -sf "$(get_color 0)" -fn 'monospace:size=10'

@@ -1,0 +1,118 @@
+#define fg      #afaf9d
+#define bg      #262626
+#define kolor0  #262626
+#define kolor1  #cd5c5c
+#define kolor2  #999900
+#define kolor3  #ed8e5e
+#define kolor4  #4080bf
+#define kolor5  #d596e9
+#define kolor6  #248f8f
+#define kolor7  #afaf9d
+#define kolor8  #262626
+#define kolor9  #e44444
+#define kolor10 #739900
+#define kolor11 #f2cc5a
+#define kolor12 #36b7e2
+#define kolor13 #d596e9
+#define kolor14 #22c3c3
+#define kolor15 #afaf9d
+#define cr      kolor2
+#define void    #1d1d1d
+
+*foreground: fg
+*background: void
+*borderColor: bg
+*cursorColor: cr
+
+*.foreground: fg
+*.background: void
+*.cursorColor: cr
+*.borderColor: bg
+
+*color0:  kolor0
+*color1:  kolor1
+*color2:  kolor2
+*color3:  kolor3
+*color4:  kolor4
+*color5:  kolor5
+*color6:  kolor6
+*color7:  kolor7
+*color8:  kolor8
+*color9:  kolor9
+*color10: kolor10
+*color11: kolor11
+*color12: kolor12
+*color13: kolor13
+*color14: kolor14
+*color15: kolor15
+*color256: void
+*color257: fg
+*color258: cr
+
+*.color0:  kolor0
+*.color1:  kolor1
+*.color2:  kolor2
+*.color3:  kolor3
+*.color4:  kolor4
+*.color5:  kolor5
+*.color6:  kolor6
+*.color7:  kolor7
+*.color8:  kolor8
+*.color9:  kolor9
+*.color10: kolor10
+*.color11: kolor11
+*.color12: kolor12
+*.color13: kolor13
+*.color14: kolor14
+*.color15: kolor15
+*.color256: void
+*.color257: fg
+*.color258: cr
+
+!! Font settings
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!! st
+!! Transparency (0-1):
+st.alpha: 0.97
+!! Set a default font and font size as below:
+st.font: mono:pixelsize=14
+st.borderpx: 20
+st.blinktimeout: 300
+
+!! dwm
+!! settings
+dwm.borderpx: 2               /*   border pixel of windows */
+dwm.snap: 32                  /* snap pixel */
+dwm.gappih: 20                /* horiz inner gap between windows */
+dwm.gappiv: 20                /* vert inner gap between windows */
+dwm.gappoh: 20                /* horiz outer gap between windows and screen edge */
+dwm.gappov: 20                /* vert outer gap between windows and screen edge */
+dwm.smartgaps: 0              /* 1 means no outer gap when there is only one window */
+dwm.showbar: 1                /* 0 means no bar */
+dwm.topbar: 1                 /* 0 means bottom bar */
+dwm.swallowfloating: 0        /* 1 means swallow floating windows by default */
+dwm.usealtbar: 1
+!! colors
+dwm.normbgcolor: bg
+dwm.normbordercolor: bg
+dwm.normfgcolor: fg
+dwm.selbgcolor: bg
+dwm.selbordercolor: kolor10
+dwm.selfgcolor: kolor3
+!! layouts
+dwm.mfact: 0.55              /* factor of master area size [0.05..0.95] */
+dwm.nmaster: 1               /* number of clients in master area */
+dwm.resizehints: 0           /* 1 means respect size hints in tiled resizals */
+
+!! dmenu
+dmenu.font: monospace-11
+dmenu.background: bg
+dmenu.foreground: fg
+dmenu.selbackground: kolor2
+dmenu.selforeground: kolor0

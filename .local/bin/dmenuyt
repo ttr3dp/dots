@@ -1,0 +1,7 @@
+#!/bin/sh
+
+term="$(dmenu -i -p "Search YouTube for: ")"
+
+[ "$term" = "" ] && exit 1
+
+YT $term

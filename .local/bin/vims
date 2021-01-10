@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Often I want to edit the script quickly,
+# without jumping into dotfiles dir and searching for it.
+# Alternative (and maybe better) solution
+# would be to create fzf function that would search for file in my local scripts dir
+#
+# Usage: vims myscript
+#
+$EDITOR $(which $1)

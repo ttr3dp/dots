@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z $(pidof cmus) ]; then
+    echo ""
+else
+    cmus-remote -Q | grep -E "(tag\ artist|title|status)" |
+        sed " # Replace status with icon
+            s/tag //;
+            s/\(status\|title\|artist\)//;
+            s/ playing/󰐊/;
+            s/ paused/󰏧/;
+            s/ stopped/󰓛/" | tr '\n' '~' | xargs -0 printf "%s\n" | awk -F '~' '{print $1 $3 " -" $2}'
+fi
+

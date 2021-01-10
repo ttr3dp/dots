@@ -1,0 +1,361 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = ${xrdb:background}
+background-alt = #444
+foreground = ${xrdb:color7}
+foreground-alt = #555
+primary = ${xrdb:color2}
+secondary = ${xrdb:color3}
+alert = ${xrdb:color1}
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+; offset-x = 5%
+; offset-y = 5%
+radius = 0.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Terminus:size=11:style=Bold;1
+font-1 = Material Design Icons Desktop:size=14;2
+font-2 = JoyPixels:pixelsize=10:antialias=true:autohint=true:scale=10;0
+
+modules-left = dwm xwindow
+modules-center = music
+modules-right =  torrent xkeyboard diskroot diskhome pulseaudio memory cpu temperature eth date
+
+tray-position = right
+tray-padding = 1
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+override-redirect = false
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/dwm]
+type = internal/dwm
+; format = <label-tags> <label-layout> <label-floating> <label-title>
+format = <label-tags> <label-layout> <label-floating>
+; Path to dwm socket (default: /tmp/dwm.sock)
+; socket-path = /tmp/dwm.sock
+
+; Left-click to view tag, right-click to toggle tag view
+enable-tags-click = true
+; Scroll to cycle between available tags
+enable-tags-scroll = true
+; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
+tags-scroll-empty = false
+; If true and enable-tags-scroll = true, scrolling will cycle through tags backwards
+tags-scroll-reverse = false
+; If true and enable-tags-scroll = true, wrap active tag when scrolling
+tags-scroll-wrap = false
+; Left-click to set secondary layout, right-click to switch to previous layout
+enable-layout-click = true
+; Scroll to cycle between available layouts
+enable-layout-scroll = true
+; Wrap when scrolling and reaching begining/end of layouts
+layout-scroll-wrap = true
+; Reverse scroll direction
+layout-scroll-reverse = false
+
+; If enable-layout-click = true, clicking the layout symbol will switch to this layout
+secondary-layout-symbol = [M]
+; Separator in between shown tags
+; label-separator = |
+
+; Title of currently focused window
+; Available tokens:
+;   %title%
+label-title = %title%
+label-title-padding = 2
+label-title-foreground = ${colors.primary}
+label-title-maxlen = 30
+
+; Symbol of current layout
+; Available tokens:
+;   %symbol%
+label-layout = %symbol%
+label-layout-padding = 2
+label-layout-foreground = #000
+label-layout-background = ${colors.primary}
+
+; Text to show when currently focused window is floating
+label-floating = F
+
+; States: focused, unfocused, visible, urgent, empty
+; Available tokens:
+;   %name%
+
+; focused = Selected tag on focused monitor
+label-focused = %name%
+label-focused-background = ${xrdb:background}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Unselected tag on unselected monitor
+label-unfocused = %name%
+label-unfocused-background = ${xrdb:background}
+label-unfocused-underline= ${xrdb:background}
+label-unfocused-padding = 2
+
+; visible = Unselected tag, but occupied tag on any monitor
+label-visible = %name%
+label-visible-background = ${xrdb:background}
+label-visible-underline = ${xrdb:background}
+label-visible-padding = ${self.label-unfocused-padding}
+
+; urgent = Unselected tag with window that has urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; empty = Unselected and unoccupied tag
+; This can be set to an empty string to hide empty tags
+label-empty = ""
+label-empty-background = ${colors.background}
+label-empty-padding = 2
+
+; modules
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:40:...%
+
+[module/torrent]
+type = custom/script
+interval = 30
+exec-if = pgrep -x transmission-da
+exec = torrent
+
+click-left = torrent 1
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "󰥻 "
+format-prefix-foreground = ${xrdb:color6}
+format-prefix-underline =
+
+label-layout = %layout%
+label-layout-underline =
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline =
+
+[module/diskroot]
+type = custom/script
+interval = 90
+
+exec = bar-disk 1 "/"
+format-prefix = "󱁿 "
+format-prefix-foreground = ${xrdb:color7}
+click-left = bar-disk 2
+click-right = bar-disk 3
+
+[module/diskhome]
+type = custom/script
+interval = 90
+
+exec = bar-disk 1 /home
+format-prefix = "󱂵 "
+format-prefix-foreground = ${xrdb:color7}
+click-left = bar-disk 2
+click-right = bar-disk 3
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+
+[module/music]
+type = custom/script
+interval = 10
+exec-if = pgrep -x cmus
+exec = music
+format-prefix = "🤘 "
+format-suffix = "  🤘"
+
+click-left = cmus-remote -u
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "󰻠"
+format-prefix-foreground = ${xrdb:color1}
+format-underline =
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "󰍛 "
+format-prefix-foreground = ${xrdb:color5}
+format-underline =
+label = %gb_used%/%gb_total%
+
+[module/eth]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+
+format-connected-underline =
+format-connected-prefix = "󰈀 "
+format-connected-prefix-foreground = ${xrdb:color4}
+label-connected = %local_ip%
+label-disconnected = 󰈂
+label-disconnected-foreground = ${xrdb:color1}
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%Y %b %d (%a)"
+date-alt =
+
+time = "%H:%M"
+time-alt =
+
+format-prefix = "󱛡 "
+format-prefix-foreground = ${xrdb:color3}
+format-underline =
+
+label = %date% %time%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume><label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${xrdb:color7}
+
+label-muted = 󰸈
+label-muted-foreground = ${xrdb:color1}
+
+ramp-volume-0 = 󰕿
+ramp-volume-1 = 󰖀
+ramp-volume-2 = 󰕾
+ramp-volume-foreground = ${xrdb:color2}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/temperature]
+type = custom/script
+interval = 1
+
+exec = temp 1
+format-prefix = "󰔏 "
+format-prefix-foreground = ${xrdb:color9}
+click-left = temp 2
+click-right = temp 3
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = false
+
+format-spacing = 1
+
+label-open = 🔒
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Status bar module for disk space
+
+case $1 in
+    1) printf "%s\n" "$(df -h "$2" | awk ' /[0-9]/ {print $4}')" ;;
+    2) pgrep -x dunst >/dev/null && notify-send " Disk space" "$(df -h --output=target,used,size)" ;;
+    3) pgrep -x dunst >/dev/null && notify-send " Disk module" "\- Shows used hard drive space.
+        -- Click to show all disk info." ;;
+esac
+
