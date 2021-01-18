@@ -4,6 +4,9 @@ Config files.
 
 Managed as a bare git repo.
 
+For more visually appealing setup, check [suckmost](https://github.com/ttr3dp/dots/tree/suckmost) branch.
+Currently, I'm in the process of simplifying and de-bloating my setup.
+
 ### Software ###
 
 |                    |                                                          |
@@ -26,9 +29,4 @@ Managed as a bare git repo.
 | Fonts:             | Check [My fonts config](https://github.com/ttr3dp/dots/blob/master/.config/fontconfig/fonts.conf) |
 | Notifications:     | [dunst](https://dunst-project.org/)                      |
 | Composite manager: | [tryone-compton with kawase blur](https://github.com/tryone144/compton)               |
-| Keybindings:       | [sxhkd](https://github.com/baskerville/sxhkd)            |
 | Torrent client:    | [transmission](https://transmissionbt.com/)              |
-
-### Screenshot ###
-
-![screenshot](https://github.com/ttr3dp/dots/blob/master/.cache/scrot.png)
