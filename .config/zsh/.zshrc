@@ -89,7 +89,7 @@ alias clr="clear"
 alias grep="grep --color=auto"
 
 # colorize ls
-alias ls="exa --group-directories-first"
+alias ls="ls --color=auto --group-directories-first"
 
 # always use neovim
 alias vim="nvim"
