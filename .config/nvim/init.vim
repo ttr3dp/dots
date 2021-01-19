@@ -1,20 +1,17 @@
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
+  echo "Downloading junegunn/vim-plug to manage plugins..."
+  silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+  silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+  autocmd VimEnter * PlugInstall
 endif
 
 " PLUGINS ----------------------------------------------------------------- {{{
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
 " Visual
-Plug 'norcalli/nvim-colorizer.lua'
-Plug '~/code/perun.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" Ruby
-Plug 'vim-ruby/vim-ruby'
+" Ruby Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
@@ -263,30 +260,21 @@ nnoremap <leader>ri :T <right>
 " FUZZY FINDER
 " fzf
 "-------------------------------------------------------------------------------
-" Default fzf layout
-" down / up / left / right
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-function! FloatingFZF()
-  let width = float2nr(&columns * 0.9)
-  let height = float2nr(&lines * 0.9)
-  let opts = { 'relative': 'editor',
-        \ 'row': (&lines - height) / 2,
-        \ 'col': (&columns - width) / 2,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \}
-
-  let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-  call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
-endfunction
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --ignore --hidden --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-" Use leader + t for fuzzy-find
 nnoremap <Leader>t :FZF<CR>
 " Use leader + b for opened buffers list
 nnoremap <Leader>b :Buffers<CR>
@@ -350,6 +338,9 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 
 autocmd FileType c set shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType cpp set shiftwidth=2 tabstop=2 noexpandtab
+autocmd BufRead,BufNewFile xresources setl cms=/*%s*/
+autocmd BufRead,BufNewFile Xresources setl cms=/*%s*/
+autocmd BufRead,BufNewFile Xdefaults  setl cms=/*%s*/
 
 " Save all files when vim loses focus
 augroup autoSave
@@ -381,9 +372,6 @@ map <Leader>rn :call RenameFile()<cr>
 function! ColorFor(nr)
   return system("get_color " . a:nr)[:-2]
 endfunction
-
-nmap <leader>- :<c-u>call Solarized8Contrast(-v:count1)<cr>
-nmap <leader>+ :<c-u>call Solarized8Contrast(+v:count1)<cr>
 " }}}
 
 " VISUAL ------------------------------------------------------------------- {{{
@@ -392,7 +380,6 @@ function! Curbranch()
     return '|  ' . fugitive#head()
   endif
 endfunction
-
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -404,24 +391,22 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-
-
 set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 
 set termguicolors
+
 " Use dark background
 set background=dark
-colorscheme perun
+colorscheme darkblue
 
-hi Normal  guibg=NONE guifg=#afaf9d ctermbg=NONE
-" hi LineNr  guibg=NONE ctermbg=NONE
-hi StatusLine guibg=#999900 guifg=#262626 gui=bold
-hi StatusLineNC guibg=#1a1a1a guifg=#333333
-hi CursorLine guibg=#333333
-hi Folded guibg=#333333
-" hi VertSplit ctermbg=NONE ctermfg=2
+hi Normal     guibg=NONE    ctermbg=NONE
+hi LineNr     guibg=NONE    guifg=#2d2d2d
+hi Comment    guibg=NONE    guifg=#2d2d2d
+hi CursorLine guibg=#1d1d1d
+hi StatusLine guibg=#1d1d1d guifg=#d2d2d2
+hi Folded     guibg=#1d1d1d
+hi EndOfBuffer guifg=#0d0d0d
 
-lua require'colorizer'.setup()
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
