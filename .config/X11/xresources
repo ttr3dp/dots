@@ -17,7 +17,7 @@
 #define kolor14 #22c3c3
 #define kolor15 #afaf9d
 #define cr      kolor2
-#define void    #1d1d1d
+#define void    #0d0d0d
 
 *foreground: fg
 *background: void
@@ -84,35 +84,3 @@ st.alpha: 0.97
 st.font: mono:pixelsize=14
 st.borderpx: 20
 st.blinktimeout: 300
-
-!! dwm
-!! settings
-dwm.borderpx: 2               /*   border pixel of windows */
-dwm.snap: 32                  /* snap pixel */
-dwm.gappih: 20                /* horiz inner gap between windows */
-dwm.gappiv: 20                /* vert inner gap between windows */
-dwm.gappoh: 20                /* horiz outer gap between windows and screen edge */
-dwm.gappov: 20                /* vert outer gap between windows and screen edge */
-dwm.smartgaps: 0              /* 1 means no outer gap when there is only one window */
-dwm.showbar: 1                /* 0 means no bar */
-dwm.topbar: 1                 /* 0 means bottom bar */
-dwm.swallowfloating: 0        /* 1 means swallow floating windows by default */
-dwm.usealtbar: 1
-!! colors
-dwm.normbgcolor: bg
-dwm.normbordercolor: bg
-dwm.normfgcolor: fg
-dwm.selbgcolor: bg
-dwm.selbordercolor: kolor10
-dwm.selfgcolor: kolor3
-!! layouts
-dwm.mfact: 0.55              /* factor of master area size [0.05..0.95] */
-dwm.nmaster: 1               /* number of clients in master area */
-dwm.resizehints: 0           /* 1 means respect size hints in tiled resizals */
-
-!! dmenu
-dmenu.font: monospace-11
-dmenu.background: bg
-dmenu.foreground: fg
-dmenu.selbackground: kolor2
-dmenu.selforeground: kolor0
