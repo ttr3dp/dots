@@ -1,23 +1,23 @@
-#define fg      #afaf9d
-#define bg      #262626
-#define kolor0  #262626
-#define kolor1  #cd5c5c
-#define kolor2  #999900
-#define kolor3  #ed8e5e
-#define kolor4  #4080bf
-#define kolor5  #d596e9
-#define kolor6  #248f8f
-#define kolor7  #afaf9d
-#define kolor8  #262626
-#define kolor9  #e44444
-#define kolor10 #739900
-#define kolor11 #f2cc5a
-#define kolor12 #36b7e2
-#define kolor13 #d596e9
-#define kolor14 #22c3c3
-#define kolor15 #afaf9d
-#define cr      kolor2
-#define void    #0d0d0d
+#define bg         #232323
+#define fg         #A0A0A0
+#define kolor0     #303030
+#define kolor8     #686868
+#define kolor9     #FFA7DA
+#define kolor1     #D370A3
+#define kolor10    #A3D572
+#define kolor2     #6D9E3F
+#define kolor12    #98CBFE
+#define kolor4     #6095C5
+#define kolor11    #EFBD8B
+#define kolor3     #B58858
+#define kolor14    #75DAA9
+#define kolor6     #3BA275
+#define kolor13    #E5B0FF
+#define kolor5     #AC7BDE
+#define kolor7     #CFCFCF
+#define kolor15    #FFFFFF
+#define cr         kolor2
+#define void       #000000
 
 *foreground: fg
 *background: void
@@ -77,10 +77,35 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
+dmenu.font: mono:pixelsize=14
+dmenu.background : void
+dmenu.foreground : fg
+dmenu.selbackground : kolor6
+dmenu.selforeground : kolor0
+dmenu.border: 3
+
 !! st
-!! Transparency (0-1):
-st.alpha: 0.97
 !! Set a default font and font size as below:
 st.font: mono:pixelsize=14
 st.borderpx: 20
 st.blinktimeout: 300
+st.alpha: 0.92
+
+!! dwm
+dwm.normbgcolor:      bg
+dwm.normbordercolor:  bg
+dwm.normfgcolor:      fg
+dwm.selbgcolor:       kolor6
+dwm.selbordercolor:   kolor6
+dwm.selfgcolor:       kolor0
+dwm.borderpx:         3
+dwm.snap:             32
+dwm.gappx:            8
+dwm.showbar:          1
+dwm.topbar:           1
+dwm.nmaster:          1
+dwm.resizehints:      0
+dwm.mfact:            0.5
+dwm.swallowfloating:  0
+dwm.focusedontop:     1
+dwm.focusonwheel:     0

@@ -1,8 +1,8 @@
 bindkey -e
-# History in cache directory:
+
+HISTFILE="$XDG_CACHE_HOME/zsh/history" # History in cache directory
 HISTSIZE=10000000
 SAVEHIST=10000000
-HISTFILE="$XDG_CACHE_HOME/zsh/history"
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY             # Share history between all sessions.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
@@ -88,8 +88,13 @@ alias clr="clear"
 # colorize grep
 alias grep="grep --color=auto"
 
-# colorize ls
-alias ls="ls --color=auto --group-directories-first"
+# general
+alias \
+  ls="ls --color=auto --group-directories-first" \
+  cp="cp -iv" \
+  rm="rm -vI" \
+  mv="mv -iv" \
+  mkd="mkdir -pv"
 
 # always use neovim
 alias vim="nvim"
