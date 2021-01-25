@@ -2,10 +2,10 @@
 # Pause music
 cmus-remote -U
 # Pause mpv
-pauseallmpv
+# pauseallmpv
 
 # DND dunst
 notify-send -i "" "DUNST_COMMAND_PAUSE"
 xset dpms force off
-i3lock -n -e -f -c "$(get_color 0)"
+i3lock -n -e -f -c "$(get_color 256)"
 notify-send -i "" "DUNST_COMMAND_RESUME"
