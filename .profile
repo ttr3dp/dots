@@ -52,10 +52,20 @@ __GL_SHADER_DISK_CACHE="0"
 
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
+export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
+export ADB_KEYS_PATH="$ANDROID_PREFS_ROOT"
 
+# If this variable is in the environment when bash starts,
+# the shell enters posix  mode  before  reading  the  startup
+# files, as if the --posix invocation option had been supplied.
+# Now bash will take ENV env var into account.
+export POSIXLY_CORRECT="1"
+
+# Shell agnostic config.
+export ENV=$HOME/.shrc
 
 # Start graphical server if one is not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg > /dev/null && exec startx
 
 # Switch escape and caps if tty:
-sudo -n loadkeys ~/.config/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys ~/.config/ttymaps.kmap 2> /dev/null

@@ -1,0 +1,116 @@
+#!/bin/sh
+
+HISTFILE="$XDG_CACHE_HOME/zsh/history" # History in cache directory
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+export FFF_HIDDEN=1
+export FFF_OPENER="xdg-open"
+export FFF_STAT_CMD="stat"
+export FFF_CD_ON_EXIT=1
+export FFF_TRASH=""
+export FFF_TRASH_CMD="rm -rf"
+
+parse_git_dirty() {
+    STATUS="$(git status 2> /dev/null)"
+    if echo ${STATUS} | grep -c "renamed:"         &> /dev/null; then printf "~"; else printf ""; fi
+    if echo ${STATUS} | grep -c "branch is ahead:" &> /dev/null; then printf "!"; else printf ""; fi
+    if echo ${STATUS} | grep -c "new file::"       &> /dev/null; then printf "+"; else printf ""; fi
+    if echo ${STATUS} | grep -c "Untracked files:" &> /dev/null; then printf "?"; else printf ""; fi
+    if echo ${STATUS} | grep -c "modified:"        &> /dev/null; then printf "*"; else printf ""; fi
+    if echo ${STATUS} | grep -c "deleted:"         &> /dev/null; then printf "-"; else printf ""; fi
+}
+parse_git_branch() {
+    b=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+     [ "$b" ] && printf " | %s" "$b"
+}
+parse_pwd() {
+    echo ${PWD} | sed "s/\/home\/${USER}/~/"
+}
+__export_ps1() {
+    export PS1="$(parse_pwd)$(parse_git_branch)$(parse_git_dirty)\n\$ "
+}
+__export_ps1
+PROMPT_COMMAND='__export_ps1'
+
+export FZF_COMPLETION_TRIGGER='**'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='
+--extended
+--reverse
+--color=fg:15,bg:-1,hl:6
+--color=fg+:7,bg+:-1,hl+:6
+--color=info:-1,prompt:-1,pointer:5
+--color=marker:-1,spinner:-1,header:-1
+'
+
+. /usr/share/fzf/completion.bash
+. /usr/share/fzf/key-bindings.bash
+
+#Aliases
+# general
+alias \
+  ls="ls --color=auto --group-directories-first" \
+  cp="cp -iv" \
+  rm="rm -vI" \
+  mv="mv -iv" \
+  mkd="mkdir -pv"
+
+# reload sh config file
+alias reload="echo \"reloading config...\" && exec ${SHELL}"
+
+# always use neovim
+alias vim="nvim"
+
+# shorten pacman
+alias p="sudo pacman"
+
+# bluetooth
+alias bt="bluetoothctl"
+
+# shorten systemctl
+alias SS="sudo systemctl"
+
+# use single mpv ipc server
+alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
+
+alias o="xdg-open"
+
+# CONFIG FILES
+# Xresources
+alias xconf="${EDITOR} ${XDG_CONFIG_HOME}/Xresources"
+# Zsh
+alias shconf="${EDITOR} ${HOME}/.shrc"
+# Neovim
+alias nvimconf="${EDITOR} ~/.config/nvim/init.vim"
+alias vimconf="${EDITOR} ~/.config/nvim/init.vim"
+# Fonts
+alias fconf="${EDITOR} ~/.config/fontconfig/fonts.conf"
+# Dotfiles
+alias dots="/usr/bin/git --git-dir=${HOME}/code/dots/ --work-tree=${HOME}"
+
+# docker compose
+alias dc="docker-compose"
+alias dcb="dc build"
+alias dcr="dc run"
+alias dce="dc exec"
+alias dcd="dc down"
+alias dcu="dc up"
+alias dcbup="dc down && dc build && dc up app"
+alias dcps="dc ps"
+alias dclg="dc logs"
+
+alias rs="bundle exec rails s"
+alias rr="bundle exec rails routes"
+alias rc="bundle exec rails c"
+alias rdm="bundle exec rails db:migrate"
+alias rdr="bundle exec rails db:rollback"
+alias rdc="bundle exec rails db:create"
+alias rdd="bundle exec rails db:drop"
+alias rds="bundle exec rails db:seed"
+
+
+mkcd(){
+  mkdir -pv "$1" && cd "$1"
+}

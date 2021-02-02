@@ -5,7 +5,8 @@ dunst &
 compton &
 setbg &
 unclutter &
-xrdb "$XDG_CONFIG_HOME/X11/xresources"
+dwmblocks &
+xrdb "$XDG_CONFIG_HOME/Xresources"
 
 while :
 do

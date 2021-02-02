@@ -9,15 +9,13 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
 " Visual
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug '~/code/cs.vim'
 
-" Ruby Plug 'vim-ruby/vim-ruby'
+" Ruby
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
-
-" Coffeescript
-Plug 'kchmck/vim-coffee-script'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
@@ -40,7 +38,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-dispatch'
 Plug 'unblevable/quick-scope'
 
 " Testing
@@ -68,9 +65,7 @@ set noswapfile
 set autowrite
 " If file is changes outside of vim, reload it right away
 set autoread
-" Show line numbers
-set number
-" Number of command to keep in history table
+" Number of commands to keep in history table
 set history=100
 " Set timeout length
 set ttimeout
@@ -98,6 +93,8 @@ set expandtab
 " Open all folds by default
 set nofoldenable
 " Text width at 80 characters
+" Remove ~ at EOB
+let &fcs='eob: '
 set tw=80
 " Show margin at 81st character
 set list
@@ -105,7 +102,6 @@ set listchars=tab:»·,trail:·,nbsp:·
 " Split below/right by default
 set splitbelow splitright
 " Start diff mode in vertical split
-set cursorline
 set diffopt+=vertical
 " Enable mouse
 set mouse=a
@@ -198,7 +194,6 @@ augroup END
 " }}}
 
 " MAPPINGS ----------------------------------------------------------------- {{{
-
 " Map leader to SPACE
 let mapleader = " "
 
@@ -222,6 +217,7 @@ nnoremap <leader><cr> :nohl<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 " Source $MYVIMRC
 nnoremap <leader>so :so $MYVIMRC<cr>
+nnoremap <leader>sc :lua package.loaded['colorizer'] = nil; require('colorizer').setup(...); require('colorizer').attach_to_buffer(0)<cr>
 
 " Expand active file dir in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -260,28 +256,13 @@ nnoremap <leader>ri :T <right>
 " FUZZY FINDER
 " fzf
 "-------------------------------------------------------------------------------
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 nnoremap <Leader>t :FZF<CR>
 " Use leader + b for opened buffers list
 nnoremap <Leader>b :Buffers<CR>
 " }}}
 
 " TESTING - vim-test ------------------------------------------------------- {{{
-" Use Neoterm for running tests
+"iUse Neoterm for running tests
 let test#strategy = "neoterm"
 " Autoscroll through output
 let g:neoterm_autoscroll = 1
@@ -368,10 +349,12 @@ function! RenameFile()
 endfunction
 map <Leader>rn :call RenameFile()<cr>
 
-" Easily get xrdb colors
-function! ColorFor(nr)
-  return system("get_color " . a:nr)[:-2]
-endfunction
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 " }}}
 
 " VISUAL ------------------------------------------------------------------- {{{
@@ -381,31 +364,13 @@ function! Curbranch()
   endif
 endfunction
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { },  -- list of language that will be disabled
-  },
-}
-EOF
-
 set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
-
-set termguicolors
 
 " Use dark background
 set background=dark
-colorscheme darkblue
+colorscheme cs
 
-hi Normal     guibg=NONE    ctermbg=NONE
-hi LineNr     guibg=NONE    guifg=#2d2d2d
-hi Comment    guibg=NONE    guifg=#2d2d2d
-hi CursorLine guibg=#1d1d1d
-hi StatusLine guibg=#1d1d1d guifg=#d2d2d2
-hi Folded     guibg=#1d1d1d
-hi EndOfBuffer guifg=#0d0d0d
+" hi Normal     guibg=NONE    ctermbg=NONE
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
