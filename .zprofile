@@ -1,0 +1,1 @@
+/home/ttr3dp/.profile

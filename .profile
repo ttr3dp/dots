@@ -29,7 +29,6 @@ export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export _Z_DATA="$XDG_DATA_HOME/z"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export NPM_PACKAGES="$XDG_DATA_HOME/npm/.npm-packages"
@@ -54,15 +53,6 @@ export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
 export ADB_KEYS_PATH="$ANDROID_PREFS_ROOT"
-
-# If this variable is in the environment when bash starts,
-# the shell enters posix  mode  before  reading  the  startup
-# files, as if the --posix invocation option had been supplied.
-# Now bash will take ENV env var into account.
-export POSIXLY_CORRECT="1"
-
-# Shell agnostic config.
-export ENV=$HOME/.shrc
 
 # Start graphical server if one is not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg > /dev/null && exec startx
