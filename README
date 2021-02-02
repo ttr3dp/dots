@@ -1,0 +1,34 @@
+Dotfiles
+--------
+
+Config files.
+
+Managed as a bare git repo.
+
+
+Software
+--------
+
+ OS:                 https://www.archlinux.org/
+ Window manager:     https://github.com/ttr3dp/dwm
+ Statusbar:          https://github.com/ttr3dp/dwmblocks
+ Terminal:           https://github.com/ttr3dp/st
+ Launcher:           https://github.com/ttr3dp/dmenu
+ Shell:              https://www.gnu.org/software/bash/
+ Editor:             https://neovim.io/
+ Video player:       https://mpv.io/
+ Music player:       https://cmus.github.io/
+ File manager:       https://github.com/dylanaraps/fff
+ Web browser         https://brave.com/
+ PDF viewer:         https://pwmt.org/projects/zathura/
+ Image viewer:       https://github.com/muennich/sxiv
+ Fonts:              https://github.com/ttr3dp/dots/blob/master/.config/fontconfig/fonts.conf
+ Notifications:      https://dunst-project.org/
+ Composite manager:  https://github.com/yshui/picom
+ Torrent client:     https://transmissionbt.com/
+
+
+How it looks?
+-------------
+
+https://raw.githubusercontent.com/ttr3dp/dots/master/.cache/scrot.png
