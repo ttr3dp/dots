@@ -9,7 +9,7 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
 " Visual
-Plug '~/code/cs.vim'
+Plug 'romainl/Apprentice'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
@@ -193,6 +193,11 @@ augroup END
  let g:markdown_minlines = 100
 " }}}
 
+" Xresources ----------------------------------------------------------------- {{{
+ let g:markdown_fenced_languages = ['html', 'ruby', 'bash=sh']
+ let g:markdown_minlines = 100
+" }}}
+
 " MAPPINGS ----------------------------------------------------------------- {{{
 " Map leader to SPACE
 let mapleader = " "
@@ -319,9 +324,8 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
 
 autocmd FileType c set shiftwidth=2 tabstop=2 noexpandtab
 autocmd FileType cpp set shiftwidth=2 tabstop=2 noexpandtab
-autocmd BufRead,BufNewFile xresources setl cms=/*%s*/
-autocmd BufRead,BufNewFile Xresources setl cms=/*%s*/
-autocmd BufRead,BufNewFile Xdefaults  setl cms=/*%s*/
+
+autocmd FileType xdefaults setl cms=/*%s*/ makeprg=xrdb\ %
 
 " Save all files when vim loses focus
 augroup autoSave
@@ -368,9 +372,9 @@ set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 
 " Use dark background
 set background=dark
-colorscheme cs
+colorscheme apprentice
 
-" hi Normal     guibg=NONE    ctermbg=NONE
+hi Normal     guibg=NONE    ctermbg=NONE
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode

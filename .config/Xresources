@@ -1,22 +1,22 @@
-#define fg #b8c1c1
-#define bg #000000
-#define cr #ff3299
-#define kolor0 #000000
-#define kolor1 #F07178
-#define kolor2 #13CA91
-#define kolor3 #FDF200
-#define kolor4 #7898FB
-#define kolor5 #ff3299
-#define kolor6 #79ffe1
-#define kolor7 #b8c1c1
-#define kolor8 #4A4A4A
-#define kolor9 #F78C6C
-#define kolor10 #303030
-#define kolor11 #353535
-#define kolor12 #787878
-#define kolor13 #b8c1c1
-#define kolor14 #FF5370
-#define kolor15 #e6e6e6
+#define fg #c9cfda
+#define bg #0a0c10
+#define cr #aa7b98
+#define kolor0 #0a0c10
+#define kolor1 #aa7b7b
+#define kolor2 #8caa7b
+#define kolor3 #aa9f7b
+#define kolor4 #7b93aa
+#define kolor5 #aa7b98
+#define kolor6 #7ba6aa
+#define kolor7 #c9cfda
+#define kolor8 #4c566a
+#define kolor9 #aa7b7b
+#define kolor10 #8caa7b
+#define kolor11 #aa9f7b
+#define kolor12 #7b93aa
+#define kolor13 #aa7b98
+#define kolor14 #7ba6aa
+#define kolor15 #c9cfda
 
 *foreground:   fg
 *background:   bg
@@ -81,31 +81,7 @@ Xft.rgba:      rgb
 *font:  mono:pixelsize=14
 *.font: mono:pixelsize=14
 
-dmenu.font:          mono:pixelsize=14
-dmenu.background:    bg
-dmenu.foreground:    fg
-dmenu.selbackground: kolor6
-dmenu.selforeground: kolor0
-dmenu.border:        3
-
 !! st
 st.borderpx:     20
 st.blinktimeout: 300
-st.alpha:        0.90
-
-!! dwm
-dwm.normbgcolor:      bg
-dwm.normbordercolor:  bg
-dwm.normfgcolor:      fg
-dwm.selbgcolor:       kolor6
-dwm.selbordercolor:   kolor6
-dwm.selfgcolor:       kolor0
-dwm.borderpx:         3
-dwm.snap:             32
-dwm.gappx:            12
-dwm.showbar:          1
-dwm.topbar:           1
-dwm.nmaster:          1
-dwm.resizehints:      0
-dwm.mfact:            0.5
-dwm.swallowfloating:  0
+st.alpha:        0.94

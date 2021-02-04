@@ -53,7 +53,7 @@ theme_precmd () {
 }
 
 setopt prompt_subst
-export PS1='%{%}%0~${vcs_info_msg_0_}$nl\$ '
+export PS1='%{%F{4}%}%0~${vcs_info_msg_0_}$nl%F{10}\$ %{$reset_color%}'
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
 
@@ -173,6 +173,8 @@ export FZF_DEFAULT_OPTS='
 '
 . /usr/share/fzf/completion.zsh
 . /usr/share/fzf/key-bindings.zsh
+
+. /usr/share/z/z.sh
 
 #Aliases
 # general
