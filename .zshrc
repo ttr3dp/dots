@@ -18,14 +18,6 @@ autoload -U add-zsh-hook
 # COLORS
 autoload -U colors && colors
 export CLICOLOR=1
-# support colors in less
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
 
 export FFF_HIDDEN=1
 export FFF_OPENER="xdg-open"
@@ -40,13 +32,13 @@ local nl=$'\n%{\r%}';
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '*'   # display this when there are unstaged changes
-zstyle ':vcs_info:*' stagedstr '+'  # display this when there are staged changes
+zstyle ':vcs_info:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
+zstyle ':vcs_info:*' stagedstr '%F{yellow}+'  # display this when there are staged changes
 zstyle ':vcs_info:*' actionformats \
-  ' | %b%a%c%u%f'
+  ' %F{8}on %F{9} %F{5}%b%F{99}|%F{1}%a%c%u%f'
 zstyle ':vcs_info:*' formats       \
-    ' | %b%c%u%f'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat ' %b:%r'
+    ' %F{8}on %F{9} %F{5}%b%c%u%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat ' %b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn
 theme_precmd () {
     vcs_info
@@ -105,9 +97,6 @@ zstyle ':completion:*'                 verbose true
 # for commands (read: 1st word in the line) that it will list for the user
 # to choose from. The following disables that, because it's not exactly fast.
 zstyle ':completion:*:-command-:*:'    verbose false
-
-# set format for warnings
-zstyle ':completion:*:warnings'        format $'%{\e[0;31m%}No matches for:%{\e[0m%} %d'
 
 # define files to ignore for zcompile
 zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
@@ -175,6 +164,9 @@ export FZF_DEFAULT_OPTS='
 . /usr/share/fzf/key-bindings.zsh
 
 . /usr/share/z/z.sh
+
+# GPG
+export GPG_TTY=$(tty)
 
 #Aliases
 # general
