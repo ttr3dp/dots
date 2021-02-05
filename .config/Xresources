@@ -78,10 +78,24 @@ Xft.hinting:   1
 Xft.antialias: 1
 Xft.rgba:      rgb
 
-*font:  mono:pixelsize=14
-*.font: mono:pixelsize=14
+*font:  mono:size=10
+*.font: mono:size=10
 
 !! st
 st.borderpx:     20
-st.blinktimeout: 300
 st.alpha:        0.94
+
+!! herbe
+herbe.background_color: bg
+herbe.border_color: kolor11
+herbe.font_color: fg
+herbe.font_pattern: mono:size=10
+herbe.line_spacing: 5
+herbe.padding: 12
+herbe.width: 200
+herbe.border_size: 2
+herbe.pos_x: 12
+herbe.pos_y: 34
+! 0 = TOP_LEFT, 1 = TOP_RIGHT, 2 = BOTTOM_LEFT, 3 = BOTTOM_RIGHT
+herbe.corner: 1
+herbe.duration: 5
