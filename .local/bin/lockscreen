@@ -3,7 +3,5 @@
 cmus-remote -U
 
 # DND dunst
-dnd
 xset dpms force off
 i3lock -n -e -f -c "$(get_color 0)"
-dnd
