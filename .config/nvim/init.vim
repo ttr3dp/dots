@@ -8,9 +8,6 @@ endif
 " PLUGINS ----------------------------------------------------------------- {{{
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
-" Visual
-Plug 'romainl/Apprentice'
-
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
@@ -93,6 +90,8 @@ set expandtab
 " Open all folds by default
 set nofoldenable
 " Text width at 80 characters
+set textwidth=80
+set colorcolumn=+1
 " Remove ~ at EOB
 let &fcs='eob: '
 set tw=80
@@ -189,11 +188,6 @@ augroup END
 " }}}
 
 " MARKDOWN ----------------------------------------------------------------- {{{
- let g:markdown_fenced_languages = ['html', 'ruby', 'bash=sh']
- let g:markdown_minlines = 100
-" }}}
-
-" Xresources ----------------------------------------------------------------- {{{
  let g:markdown_fenced_languages = ['html', 'ruby', 'bash=sh']
  let g:markdown_minlines = 100
 " }}}
@@ -314,8 +308,6 @@ augroup vimrcEx
         \ formatoptions-=c
         \ formatoptions-=r
         \ formatoptions-=o
-
-
 augroup END
 
 autocmd! FileType fzf
@@ -368,13 +360,16 @@ function! Curbranch()
   endif
 endfunction
 
-set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
+set termguicolors
 
+set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 " Use dark background
 set background=dark
-colorscheme apprentice
+colorscheme earthsong-contrast
 
-hi Normal     guibg=NONE    ctermbg=NONE
+hi Normal      guibg=NONE  ctermbg=NONE
+hi NonText     guibg=NONE
+hi StatusLine  gui=NONE cterm=NONE
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
