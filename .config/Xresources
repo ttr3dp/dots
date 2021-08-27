@@ -1,22 +1,23 @@
-#define fg #c4af9a
-#define bg #12100f
-#define cr #db784d
-#define kolor0 #201c1b
-#define kolor1 #ba0e2e
-#define kolor2 #95cc5e
-#define kolor3 #db784d
-#define kolor4 #60a365
-#define kolor5 #db784d
-#define kolor6 #95cc5e
-#define kolor7 #ebd1b7
-#define kolor8 #3c3532
-#define kolor9 #e61f44
-#define kolor10 #a9c58d
-#define kolor11 #ecb8a2
-#define kolor12 #95b898
-#define kolor13 #d6a692
-#define kolor14 #aed08d
-#define kolor15 #fcf7f3
+#define fg #8c8c8c
+#define bg #0c0d0e
+#define cr #e9a96f
+#define kolor0 #0c0d0e
+#define kolor1 #bf6262
+#define kolor2 #a2a565
+#define kolor3 #e9a96f
+#define kolor4 #789bad
+#define kolor5 #9f7aa5
+#define kolor6 #638e8a
+#define kolor7 #8c8c8c
+#define kolor8 #5d6369
+#define kolor9 #bf6262
+#define kolor10 #a5a76e
+#define kolor11 #e9a96f
+#define kolor12 #789bad
+#define kolor13 #9f7aa5
+#define kolor14 #9f7aa5
+#define kolor15 #b7bec9
+
 
 *foreground:   fg
 *background:   bg
@@ -78,11 +79,11 @@ Xft.hinting:   1
 Xft.antialias: 1
 Xft.rgba:      rgb
 
-*font:  mono:size=10
-*.font: mono:size=10
+*font:  mono:pixelsize=16
+*.font: mono:pixelsize=16
 
 !! dmenu
-dmenu.font:          mono:size=10
+dmenu.font:          mono:pixelsize=16
 dmenu.background:    bg
 dmenu.foreground:    fg
 dmenu.selbackground: bg
@@ -92,6 +93,8 @@ dmenu.border:        3
 !! st
 st.borderpx:     20
 st.alpha:        0.97
+st.cwscale:      1.0
+st.chscale:      1.0
 
 !! dwm
 dwm.normbgcolor:      bg
@@ -114,7 +117,7 @@ dwm.swallowfloating:  0
 herbe.background_color: bg
 herbe.border_color: cr
 herbe.font_color: fg
-herbe.font_pattern: mono:size=10
+herbe.font_pattern: mono:pixelsize=16
 herbe.line_spacing: 5
 herbe.padding: 12
 herbe.width: 200
