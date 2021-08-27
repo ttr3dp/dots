@@ -11,7 +11,7 @@ Software
 
  OS:                 https://www.archlinux.org/
  Window manager:     https://github.com/ttr3dp/dwm
- Statusbar:          https://github.com/ttr3dp/dwmblocks
+ Statusbar:          https://tools.suckless.org/slstatus
  Terminal:           https://github.com/ttr3dp/st
  Launcher:           https://github.com/ttr3dp/dmenu
  Shell:              http://zsh.sourceforge.net/
