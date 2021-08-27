@@ -4,7 +4,7 @@ setxkbmap -layout us,rs -variant altgr-intl,latin -option caps:escape -option al
 compton &
 setbg &
 unclutter &
-dwmblocks &
+slstatus &
 xrdb "$XDG_CONFIG_HOME/Xresources"
 
 while :
