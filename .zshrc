@@ -19,6 +19,9 @@ autoload -U add-zsh-hook
 autoload -U colors && colors
 export CLICOLOR=1
 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 export FFF_HIDDEN=1
 export FFF_OPENER="xdg-open"
 export FFF_STAT_CMD="stat"
@@ -49,6 +52,7 @@ export PS1='%{%F{4}%}%0~${vcs_info_msg_0_}$nl%F{10}\$ %{$reset_color%}'
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
 
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # COMPLETION (figuring out what I like):
 autoload -U compinit
@@ -148,6 +152,9 @@ else
   fi
 fi'
 
+# asdf
+. /opt/asdf-vm/asdf.sh
+
 # fzf
 export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -167,6 +174,9 @@ export FZF_DEFAULT_OPTS='
 
 # GPG
 export GPG_TTY=$(tty)
+
+# Rootless docker
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 #Aliases
 # general
