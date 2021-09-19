@@ -1,22 +1,22 @@
-#define fg #b8c1c1
-#define bg #000000
-#define cr #ff3299
-#define kolor0 #000000
-#define kolor1 #F07178
-#define kolor2 #13CA91
-#define kolor3 #FDF200
-#define kolor4 #7898FB
-#define kolor5 #ff3299
-#define kolor6 #79ffe1
-#define kolor7 #b8c1c1
-#define kolor8 #4A4A4A
-#define kolor9 #F78C6C
-#define kolor10 #303030
-#define kolor11 #353535
-#define kolor12 #787878
-#define kolor13 #b8c1c1
-#define kolor14 #FF5370
-#define kolor15 #e6e6e6
+#define fg #8c8c8c
+#define bg #0c0d0e
+#define cr #e9a96f
+#define kolor0 #0c0d0e
+#define kolor1 #bf6262
+#define kolor2 #a2a565
+#define kolor3 #e9a96f
+#define kolor4 #789bad
+#define kolor5 #9f7aa5
+#define kolor6 #638e8a
+#define kolor7 #8c8c8c
+#define kolor8 #5d6369
+#define kolor9 #bf6262
+#define kolor10 #a5a76e
+#define kolor11 #e9a96f
+#define kolor12 #789bad
+#define kolor13 #9f7aa5
+#define kolor14 #9f7aa5
+#define kolor15 #b7bec9
 
 *foreground:   fg
 *background:   bg
@@ -72,17 +72,17 @@
 
 !! Font settings
 Xft.autohint:  0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
+Xft.lcdfilter: 2
+Xft.hintstyle: 2
 Xft.hinting:   1
 Xft.antialias: 1
 Xft.rgba:      rgb
 
-*font:  mono:size=10
-*.font: mono:size=10
+*font:  mono:size=11
+*.font: mono:size=11
 
-!! dmenu
-dmenu.font:          mono:pixelsize=14
+!!odmenu
+dmenu.font:          mono:size=11
 dmenu.background:    bg
 dmenu.foreground:    fg
 dmenu.selbackground: bg
@@ -91,17 +91,18 @@ dmenu.border:        3
 
 !! st
 st.borderpx: 20
-st.alpha:    0.95
+st.alpha:    1.0
 st.cwscale:  1.0
-st.chscale:  1.0
+st.chscale:  1.1
 
 !! dwm
+dwm.font:             mono:size=10
 dwm.normbgcolor:      bg
 dwm.normbordercolor:  bg
 dwm.normfgcolor:      fg
 dwm.selbgcolor:       bg
-dwm.selbordercolor:   kolor2
-dwm.selfgcolor:       kolor2
+dwm.selbordercolor:   cr
+dwm.selfgcolor:       cr
 dwm.borderpx:         1
 dwm.snap:             32
 dwm.gappx:            12
@@ -114,7 +115,7 @@ dwm.swallowfloating:  0
 
 !! herbe
 herbe.background_color: bg
-herbe.border_color:     kolor2
+herbe.border_color:     cr
 herbe.font_color:       fg
 herbe.font_pattern:     mono:pixelsize=14
 herbe.line_spacing:     5
@@ -126,3 +127,7 @@ herbe.pos_y:            34
 ! 0 = TOP_LEFT, 1 = TOP_RIGHT, 2 = BOTTOM_LEFT, 3 = BOTTOM_RIGHT
 herbe.corner:   1
 herbe.duration: 5
+
+!! sxiv
+sxiv.background: bg
+sxiv.foreground: fg
