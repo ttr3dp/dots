@@ -8,15 +8,23 @@ endif
 " PLUGINS ----------------------------------------------------------------- {{{
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
+" Visual
+Plug 'Gavinok/spaceway.vim'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rails'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+
+" Crystal
+Plug 'vim-crystal/vim-crystal'
 
 " Markdown
 Plug 'tpope/vim-markdown'
@@ -27,6 +35,13 @@ Plug 'junegunn/gv.vim'
 
 " Fuzzy finder
 Plug 'junegunn/fzf.vim'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+
+" Completion
+Plug 'hrsh7th/nvim-compe'
 
 " Editing utils
 Plug 'tpope/vim-repeat'
@@ -51,7 +66,6 @@ filetype plugin indent on
 syntax on
 " Remove start buffer content
 set shortmess+=I
-
 set lazyredraw
 set noshowcmd
 " Don't generate backup nor swap files
@@ -91,11 +105,11 @@ set expandtab
 set nofoldenable
 " Text width at 80 characters
 set textwidth=80
-set colorcolumn=+1
+" Show margin at 81st character
+" set colorcolumn=+1
+set number
 " Remove ~ at EOB
 let &fcs='eob: '
-set tw=80
-" Show margin at 81st character
 set list
 set listchars=tab:»·,trail:·,nbsp:·
 " Split below/right by default
@@ -113,10 +127,6 @@ set wildmode=full
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,
       \**/.git/*,**/.bundle/*,**/bin/*,**/.svn/*,**/tmp/*
 
-" Completion popup
-" Use a completion popup menu even if there is only one match
-set completeopt=menu,preview
-
 " Window height & width
 set winheight=10
 set winminheight=10
@@ -131,7 +141,7 @@ set undodir=~/.config/nvim/.persistent_undo
 runtime! macros/matchit.vim
 " }}}
 
-" SH --------------------------------------------------------------------- {{{
+" SH ----------------------------------------------------------------------- {{{
 augroup filetype_sh
   autocmd!
   autocmd FileType sh setlocal tabstop=4 shiftwidth=4
@@ -153,8 +163,8 @@ augroup END
 let g:ruby_operators = 1
 " HEREDOC Support
 let g:ruby_heredoc_syntax_defaults = {
-        \ "javascript" : {
-        \   "start" : "JS",
+        \ "json" : {
+        \   "start" : "JSON",
         \},
         \ "sql" : {
         \   "start" : "SQL",
@@ -167,6 +177,9 @@ let g:ruby_heredoc_syntax_defaults = {
         \},
         \ "ruby" : {
         \   "start" : "RUBY",
+        \},
+        \ "javascript" : {
+        \   "start" : "JS",
         \}
   \}
 " }}}
@@ -216,7 +229,6 @@ nnoremap <leader><cr> :nohl<cr>
 nnoremap <leader>ev :e $MYVIMRC<cr>
 " Source $MYVIMRC
 nnoremap <leader>so :so $MYVIMRC<cr>
-nnoremap <leader>sc :lua package.loaded['colorizer'] = nil; require('colorizer').setup(...); require('colorizer').attach_to_buffer(0)<cr>
 
 " Expand active file dir in command mode
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -274,6 +286,16 @@ nmap <silent> <leader>rl :TestLast<CR>
 nmap <silent> <leader>rg :TestVisit<CR>
 " }}}
 
+" LSP ---------------------------------------------------------------------- {{{
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> gf    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> gn    <cmd>lua vim.lsp.buf.rename()<CR>
+" }}}
+
 " ALIGNMENTS - EasyAlign --------------------------------------------------- {{{
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
@@ -319,6 +341,13 @@ autocmd FileType cpp set shiftwidth=2 tabstop=2 noexpandtab
 
 autocmd FileType xdefaults setl cms=/*%s*/ makeprg=xrdb\ %
 
+autocmd FileType crystal setl makeprg=crystal\ build\ %\ --no-color
+
+autocmd BufRead,BufNewFile config.h setl makeprg=make\ &&\ sudo\ make\ install\ &&\ sudo\ make\ clean
+autocmd BufRead,BufNewFile dwm.c    setl makeprg=make\ &&\ sudo\ make\ install\ &&\ sudo\ make\ clean
+autocmd BufRead,BufNewFile st.c     setl makeprg=make\ &&\ sudo\ make\ install\ &&\ sudo\ make\ clean
+autocmd BufRead,BufNewFile dmenu.c  setl makeprg=make\ &&\ sudo\ make\ install\ &&\ sudo\ make\ clean
+
 " Save all files when vim loses focus
 augroup autoSave
   autocmd!
@@ -360,16 +389,27 @@ function! Curbranch()
   endif
 endfunction
 
+" Use 24-bit colors
 set termguicolors
-
+" Add git branch to statusline
 set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
+
 " Use dark background
 set background=dark
-colorscheme earthsong-contrast
+" Set colorscheme
+colorscheme spaceway
 
-hi Normal      guibg=NONE  ctermbg=NONE
-hi NonText     guibg=NONE
-hi StatusLine  gui=NONE cterm=NONE
+" Some custom syntax highlighting
+hi Normal          ctermbg=NONE guibg=#0c0d0e
+" hi ColorColumn     guibg=#415367
+" hi NonText       ctermbg=NONE
+" hi Comment       ctermfg=238
+" hi LineNr        ctermfg=235
+" hi VertSplit     ctermfg=0 ctermbg=238
+" hi StatusLineNC  cterm=NONE ctermfg=145 ctermbg=0
+" hi StatusLine    cterm=NONE ctermfg=120 ctermbg=0
+" hi Visual guibg=#1d1d1d
+" hi Folded guifg=#dedede guibg=#1d1d1d
 
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
@@ -379,3 +419,9 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " }}}
+
+lua <<EOF
+require("lsp")
+require("completion")
+EOF
+
