@@ -9,14 +9,11 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 
 " Visual
-Plug 'Gavinok/spaceway.vim'
+Plug 'Luxed/ayu-vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 " Ruby
-Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rails'
 Plug 'joker1007/vim-ruby-heredoc-syntax'
 
 " Elixir
@@ -397,20 +394,14 @@ set statusline=%f\ %{Curbranch()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 " Use dark background
 set background=dark
 " Set colorscheme
-colorscheme spaceway
+let g:ayucolor="dark"
+colorscheme ayu
 
-" Some custom syntax highlighting
-hi Normal          ctermbg=NONE guibg=#0c0d0e
-" hi ColorColumn     guibg=#415367
-" hi NonText       ctermbg=NONE
-" hi Comment       ctermfg=238
-" hi LineNr        ctermfg=235
-" hi VertSplit     ctermfg=0 ctermbg=238
-" hi StatusLineNC  cterm=NONE ctermfg=145 ctermbg=0
-" hi StatusLine    cterm=NONE ctermfg=120 ctermbg=0
-" hi Visual guibg=#1d1d1d
-" hi Folded guifg=#dedede guibg=#1d1d1d
-
+" hi Normal guibg=NONE
+hi LineNr guibg=NONE
+hi StatusLine guibg=NONE
+hi Constant guifg=#ff3399
+" ioffee99
 " Use a blinking upright bar cursor in Insert mode, a solid block in normal
 " and a blinking underline in replace mode
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
