@@ -1,22 +1,22 @@
-#define fg #8c8c8c
-#define bg #0c0d0e
-#define cr #e9a96f
-#define kolor0 #0c0d0e
-#define kolor1 #bf6262
-#define kolor2 #a2a565
-#define kolor3 #e9a96f
-#define kolor4 #789bad
-#define kolor5 #9f7aa5
-#define kolor6 #638e8a
-#define kolor7 #8c8c8c
-#define kolor8 #5d6369
-#define kolor9 #bf6262
-#define kolor10 #a5a76e
-#define kolor11 #e9a96f
-#define kolor12 #789bad
-#define kolor13 #9f7aa5
-#define kolor14 #9f7aa5
-#define kolor15 #b7bec9
+#define fg #B3B1AD
+#define bg #0A0E14
+#define cr #FF3390
+#define kolor0 #0A0E14
+#define kolor1 #F07178
+#define kolor2 #C2D94C
+#define kolor3 #E6B450
+#define kolor4 #39BAE6
+#define kolor5 #A37ACC
+#define kolor6 #95E6CB
+#define kolor7 #FFFFFF
+#define kolor8 #3E4B59
+#define kolor9 #FF3333
+#define kolor10 #C2D94C
+#define kolor11 #E6B450
+#define kolor12 #39BAE6
+#define kolor13 #A37ACC
+#define kolor14 #95E6CB
+#define kolor15 #626A73
 
 *foreground:   fg
 *background:   bg
@@ -78,10 +78,10 @@ Xft.hinting:   1
 Xft.antialias: 1
 Xft.rgba:      rgb
 
-*font:  mono:size=11
-*.font: mono:size=11
+*font:  mono:size=10
+*.font: mono:size=10
 
-!!odmenu
+!!dmenu
 dmenu.font:          mono:size=11
 dmenu.background:    bg
 dmenu.foreground:    fg
@@ -91,12 +91,12 @@ dmenu.border:        3
 
 !! st
 st.borderpx: 20
-st.alpha:    1.0
+st.alpha:    0.70
 st.cwscale:  1.0
 st.chscale:  1.1
 
 !! dwm
-dwm.font:             mono:size=10
+dwm.font:             mono:size=9
 dwm.normbgcolor:      bg
 dwm.normbordercolor:  bg
 dwm.normfgcolor:      fg
