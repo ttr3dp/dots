@@ -38,9 +38,9 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
 zstyle ':vcs_info:*' stagedstr '%F{yellow}+'  # display this when there are staged changes
 zstyle ':vcs_info:*' actionformats \
-  ' %F{8}on %F{9} %F{5}%b%F{99}|%F{1}%a%c%u%f'
+  ' %F{8}on %F{9}ᝄ %F{5}%b%F{99}|%F{1}%a%c%u%f'
 zstyle ':vcs_info:*' formats       \
-    ' %F{8}on %F{9} %F{5}%b%c%u%f'
+    ' %F{8}on %F{9}ᝄ %F{5}%b%c%u%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat ' %b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn
 theme_precmd () {
@@ -156,17 +156,8 @@ fi'
 . /opt/asdf-vm/asdf.sh
 
 # fzf
-export FZF_COMPLETION_TRIGGER='**'
+export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS='
---extended
---reverse
---color=fg:15,bg:-1,hl:6
---color=fg+:7,bg+:-1,hl+:6
---color=info:-1,prompt:-1,pointer:5
---color=marker:-1,spinner:-1,header:-1
-'
 . /usr/share/fzf/completion.zsh
 . /usr/share/fzf/key-bindings.zsh
 
@@ -215,6 +206,8 @@ alias shconf="${EDITOR} ${HOME}/.zshrc"
 # Neovim
 alias nvimconf="${EDITOR} ~/.config/nvim/init.vim"
 alias vimconf="${EDITOR} ~/.config/nvim/init.vim"
+# tmux
+alias tconf="${EDITOR} ~/.config/tmux/tmux.conf"
 # Fonts
 alias fconf="${EDITOR} ~/.config/fontconfig/fonts.conf"
 # Dotfiles
@@ -239,7 +232,6 @@ alias rdr="bundle exec rails db:rollback"
 alias rdc="bundle exec rails db:create"
 alias rdd="bundle exec rails db:drop"
 alias rds="bundle exec rails db:seed"
-
 
 mkcd(){
   mkdir -pv "$1" && cd "$1"
