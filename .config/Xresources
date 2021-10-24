@@ -1,22 +1,22 @@
-#define fg #9e9e94
-#define bg #1c1c1c
-#define cr #af5f5f
-#define kolor0 #1c1c1c
-#define kolor1 #af5f5f
-#define kolor2 #87875f
-#define kolor3 #af875f
-#define kolor4 #878787
-#define kolor5 #af8787
-#define kolor6 #87afaf
-#define kolor7 #9e9e94
-#define kolor8 #878787
-#define kolor9 #af5f5f
-#define kolor10 #87875f
-#define kolor11 #af875f
-#define kolor12 #878787
-#define kolor13 #af8787
-#define kolor14 #87afaf
-#define kolor15 #9e9e94
+#define fg #e2e2e3
+#define bg #2c2e34
+#define cr #fc5d7c
+#define kolor0 #181819
+#define kolor1 #fc5d7c
+#define kolor2 #9ed072
+#define kolor3 #e7c664
+#define kolor4 #76cce0
+#define kolor5 #b39df3
+#define kolor6 #f39660
+#define kolor7 #e2e2e3
+#define kolor8 #7f8490
+#define kolor9 #fc5d7c
+#define kolor10 #9ed072
+#define kolor11 #e7c664
+#define kolor12 #76cce0
+#define kolor13 #b39df3
+#define kolor14 #f39660
+#define kolor15 #e2e2e3
 
 *foreground:   fg
 *background:   bg
@@ -69,19 +69,19 @@
 *.color258: bg
 *.color259: fg
 
-!! Font settings
-Xft.autohint:  0
-Xft.lcdfilter: 2
-Xft.hintstyle: 2
-Xft.hinting:   1
-Xft.antialias: 1
-Xft.rgba:      rgb
+*font:  mono:pixelsize=10
+*.font: mono:pixelsize=10
 
-*font:  mono:pixelsize=16
-*.font: mono:pixelsize=16
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.dpi: 100
+Xft.rgba: rgb
+Xft.lcdfilter: lcdlight
 
 !!dmenu
-dmenu.font:          mono:size=12
+dmenu.font:          mono:pixelsize=14
 dmenu.background:    bg
 dmenu.foreground:    fg
 dmenu.selbackground: bg
@@ -90,12 +90,12 @@ dmenu.border:        3
 
 !! st
 st.borderpx: 10
-st.alpha:    1
+st.alpha:    0.97
 st.cwscale:  1.0
 st.chscale:  1.1
 
 !! dwm
-dwm.font:             mono:size=9
+dwm.font:             mono:pixelsize=12
 dwm.normbgcolor:      bg
 dwm.normbordercolor:  bg
 dwm.normfgcolor:      fg

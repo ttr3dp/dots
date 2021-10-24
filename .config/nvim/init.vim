@@ -23,6 +23,8 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-cool'
 Plug 'vim-crystal/vim-crystal'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'romgrk/doom-one.vim'
+Plug 'sainnhe/sonokai'
 call plug#end()
 
 syn on
@@ -31,7 +33,7 @@ set lazyredraw
 set nobackup
 set noswapfile
 set autowrite
-set history=100
+set history=101
 set ttimeoutlen=100
 set path+=**
 set ignorecase
@@ -88,7 +90,7 @@ augroup MyAutoCmds
   " when editing a file, always jump to the last known cursor position,
   " except for commit messages or when the position is invalid
   au BufReadPost *
-        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \ if &ft != 'gitcommit' && line("'\"") > 2 && line("'\"") <= line("$") |
         \   exe "normal g`\"" |
         \ endif
   " strip whitespace on save
@@ -112,10 +114,16 @@ augroup END
 
 set statusline=%f\ %{fugitive#statusline()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 
-colorscheme alduin
-hi Normal       guifg=#9e9e94
-hi String       guifg=#87875f
-hi Comment      guifg=#404040
-hi LineNr       guibg=NONE
-hi StatusLine   guibg=NONE guifg=#af5f5f
-hi link SpecialComment Comment
+
+" let g:sonokai_style = 'default'
+" let g:sonokai_style = 'atlantis'
+" let g:sonokai_style = 'andromeda'
+let g:sonokai_style = 'shusia'
+" let g:sonokai_style = 'maia'
+" let g:sonokai_style = 'espresso'
+
+colorscheme sonokai
+hi Normal guibg=NONE
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
