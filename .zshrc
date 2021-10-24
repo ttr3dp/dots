@@ -158,6 +158,7 @@ fi'
 # fzf
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS="--reverse"
 . /usr/share/fzf/completion.zsh
 . /usr/share/fzf/key-bindings.zsh
 
@@ -212,6 +213,12 @@ alias tconf="${EDITOR} ~/.config/tmux/tmux.conf"
 alias fconf="${EDITOR} ~/.config/fontconfig/fonts.conf"
 # Dotfiles
 alias dots="/usr/bin/git --git-dir=${HOME}/code/dots/ --work-tree=${HOME}"
+# Alacritty
+alias alconf="${EDITOR} ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
+# Neomutt
+alias mailconf="${EDITOR} ${XDG_CONFIG_HOME}/mutt/accounts/*.muttrc"
+# W3M
+alias w3m="w3m -c ${XDG_CONFIG_HOME}/w3m/config"
 
 # docker compose
 alias dc="docker-compose"
