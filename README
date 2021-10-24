@@ -9,20 +9,20 @@ Managed as a bare git repo.
 Software
 --------
 
- OS:                 https://www.archlinux.org/
+ OS:                 https://www.artixlinux.org/
  Window manager:     https://git.sr.ht/~ttr3dp/dwm
  Statusbar:          https://tools.suckless.org/slstatus
- Terminal:           https://git.sr.ht/~ttr3dp/st
+ Terminal:           https://github.com/alacritty/alacritty
  Launcher:           https://git.sr.ht/~ttr3dp/dmenu
  Shell:              http://zsh.sourceforge.net/
  Editor:             https://neovim.io/
  Video player:       https://mpv.io/
  Music player:       https://cmus.github.io/
- File manager:       https://github.com/dylanaraps/fff
- Web browser         https://brave.com/
+ File manager:       NONE
+ Web browser         https://librewolf-community.gitlab.io/
  PDF viewer:         https://pwmt.org/projects/zathura/
  Image viewer:       https://github.com/muennich/sxiv
  Fonts:              https://git.sr.ht/~ttr3dp/dots/blob/master/.config/fontconfig/fonts.conf
  Notifications:      https://git.sr.ht/~ttr3dp/herbe
  Composite manager:  https://github.com/yshui/picom
- Torrent client:     https://www.deluge-torrent.org/
+ Torrent client:     https://github.com/tremc/tremc
