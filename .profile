@@ -5,9 +5,11 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 
 # XDG
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export READER="zathura"
 export FILE="fff"
+export BROWSER="librewolf"
+export BROWSERCLI="w3m"
 
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -53,6 +55,8 @@ export ADB_KEYS_PATH="$ANDROID_PREFS_ROOT"
 export ADB_VENDOR_KEY="$XDG_CONFIG_HOME/android"
 export ANDROID_PREFS_ROOT="$XDG_CONFIG_HOME"/android
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/.notmuch-config"
 
 # Start graphical server if one is not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg > /dev/null && exec startx
