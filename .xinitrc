@@ -1,6 +1,9 @@
 #!/bin/sh
 setxkbmap -layout us,rs -variant altgr-intl,latin -option caps:escape -option altwin:swap_alt_win -option grp:shifts_toggle
 
+/usr/bin/pipewire &
+/usr/bin/pipewire-pulse &
+/usr/bin/pipewire-media-session &
 picom --experimental-backends &
 setbg &
 unclutter &
