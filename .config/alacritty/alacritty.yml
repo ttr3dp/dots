@@ -330,57 +330,34 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '#181818'
+    background: '#121212'
     foreground: '#d8d8d8'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '#d8d8d8'
-    cursor: '#d8d8d8'
+    text: CellBackground
+    cursor: '#e4e4e4'
 
   # Normal colors
   normal:
-    black:   '#181818'
-    red:     '#ab4642'
-    green:   '#a1b56c'
-    yellow:  '#f7ca88'
-    blue:    '#7cafc2'
-    magenta: '#ba8baf'
-    cyan:    '#86c1b9'
-    white:   '#d8d8d8'
+    black:   '#000000'
+    red:     '#af0000'
+    green:   '#00af00'
+    yellow:  '#afd700'
+    blue:    '#005fff'
+    magenta: '#af00af'
+    cyan:    '#00d7af'
+    white:   '#e4e4e4'
 
   # Bright colors
   bright:
-    black:   '#585858'
-    red:     '#ab4642'
-    green:   '#a1b56c'
-    yellow:  '#f7ca88'
-    blue:    '#7cafc2'
-    magenta: '#ba8baf'
-    cyan:    '#86c1b9'
+    black:   '#808080'
+    red:     '#ff0000'
+    green:   '#008000'
+    yellow:  '#ffff00'
+    blue:    '#5c5cff'
+    magenta: '#ff00ff'
+    cyan:    '#00ffff'
     white:   '#f8f8f8'
-
-  # Bright colors
-  bright:
-    black:   '#636363'
-    red:     '#bc5653'
-    green:   '#909d63'
-    yellow:  '#ebc17a'
-    blue:    '#7eaac7'
-    magenta: '#aa6292'
-    cyan:    '#86d3ce'
-    white:   '#f7f7f7'
-
-  # Dim colors
-  dim:
-    black:   '#232323'
-    red:     '#74423f'
-    green:   '#5e6547'
-    yellow:  '#8b7653'
-    blue:    '#556b79'
-    magenta: '#6e4962'
-    cyan:    '#5c8482'
-    white:   '#828282'
 
 # Bell
 # The bell is rung every time the BEL control character is received.
