@@ -1,5 +1,5 @@
-*font:  mono:pixelsize=10
-*.font: mono:pixelsize=10
+*font:  mono:pixelsize=12
+*.font: mono:pixelsize=12
 
 Xft.autohint: 0
 Xft.antialias: 1
@@ -9,31 +9,6 @@ Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcdlight
 
-!!dmenu
-dmenu.font:          mono:pixelsize=14
-dmenu.background:    bg
-dmenu.foreground:    fg
-dmenu.selbackground: bg
-dmenu.selforeground: cr
-dmenu.border:        3
-
-!! st
-st.borderpx: 10
-st.alpha:    0.97
-st.cwscale:  1.0
-st.chscale:  1.1
-
-!! dwm
-dwm.font:             mono:pixelsize=12
-dwm.borderpx:         1
-dwm.snap:             32
-dwm.gappx:            20
-dwm.showbar:          1
-dwm.topbar:           1
-dwm.nmaster:          1
-dwm.resizehints:      0
-dwm.mfact:            0.5
-dwm.swallowfloating:  0
 
 !! herbe
 herbe.font_pattern:     mono:pixelsize=14
