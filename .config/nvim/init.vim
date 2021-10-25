@@ -22,9 +22,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-cool'
 Plug 'vim-crystal/vim-crystal'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'romgrk/doom-one.vim'
-Plug 'sainnhe/sonokai'
 call plug#end()
 
 syn on
@@ -58,7 +55,7 @@ set diffopt+=vertical
 set mouse=a
 set wildmenu
 set completeopt=menu,preview
-set termguicolors
+" set termguicolors
 set undofile
 set undodir=~/.local/share/nvim/.undodir
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,
@@ -114,16 +111,15 @@ augroup END
 
 set statusline=%f\ %{fugitive#statusline()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
 
-
-" let g:sonokai_style = 'default'
-" let g:sonokai_style = 'atlantis'
-" let g:sonokai_style = 'andromeda'
-let g:sonokai_style = 'shusia'
-" let g:sonokai_style = 'maia'
-" let g:sonokai_style = 'espresso'
-
-colorscheme sonokai
-hi Normal guibg=NONE
+hi Normal ctermbg=NONE
+hi Comment ctermbg=NONE ctermfg=239
+hi ColorColumn ctermbg=234 ctermfg=7
+hi CursorLine ctermbg=234 ctermfg=NONE cterm=NONE
+hi CursorLineNR ctermfg=11 cterm=NONE
+hi LineNR ctermfg=239
+hi StatusLine ctermbg=234 ctermfg=248 cterm=bold
+hi StatusLineNC ctermbg=234 ctermfg=242 cterm=NONE
+hi VertSplit ctermfg=0 ctermbg=103
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
