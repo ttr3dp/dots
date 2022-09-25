@@ -28,6 +28,7 @@ export FFF_STAT_CMD="stat"
 export FFF_CD_ON_EXIT=1
 export FFF_TRASH=""
 export FFF_TRASH_CMD="rm -rf"
+export ASDF_DIR="${HOME}/code/asdf"
 
 # Set prompt
 autoload -Uz promptinit && promptinit
@@ -153,7 +154,7 @@ else
 fi'
 
 # asdf
-. /opt/asdf-vm/asdf.sh
+. $HOME/code/asdf/asdf.sh
 
 # fzf
 export FZF_COMPLETION_TRIGGER=',,'

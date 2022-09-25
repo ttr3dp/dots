@@ -1,0 +1,27 @@
+#!/bin/sh
+
+syspath="/sys/class/backlight/intel_backlight"
+max="$(cat "${syspath}/max_brightness")"
+current="$(cat "$syspath/brightness")"
+
+current_perc="$((current * 100 / max))"
+
+case "$@" in
+    +*)
+        incr="$(printf '%s' "$@" | tr -d '+')"
+        new_perc="$((current_perc + incr))"
+        [ "$new_perc" -gt 100 ] && new_perc=100
+        ;;
+    -*)
+        decr="$(printf '%s' "$@" | tr -d '-')"
+        new_perc="$((current_perc - decr))"
+        [ "$new_perc" -lt 0 ] && new_perc=0
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+new_val="$((max * new_perc / 100))"
+
+printf '%s' "$new_val" > "$syspath/brightness" && notify-send "Brightness: ${new_perc}%"

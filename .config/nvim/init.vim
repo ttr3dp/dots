@@ -10,6 +10,7 @@ let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'romgrk/doom-one.vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -22,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-cool'
 Plug 'vim-crystal/vim-crystal'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 syn on
@@ -44,6 +46,7 @@ set expandtab
 set textwidth=80
 set colorcolumn=+1
 set cursorline
+set laststatus=3
 set nojoinspaces
 set number
 set relativenumber
@@ -110,16 +113,18 @@ augroup MyAutoCmds
 augroup END
 
 set statusline=%f\ %{fugitive#statusline()}\ %h%w%m%r\ %=%(%y\ %l,%c%V\ %=\ %P%)
+set termguicolors
+colorscheme doom-one
 
-hi Normal ctermbg=NONE
+hi Normal guibg=NONE
+hi EndOfBuffer guibg=NONE
 hi Comment ctermbg=NONE ctermfg=239
-hi ColorColumn ctermbg=234 ctermfg=7
-hi CursorLine ctermbg=234 ctermfg=NONE cterm=NONE
-hi CursorLineNR ctermfg=11 cterm=NONE
-hi LineNR ctermfg=239
-hi StatusLine ctermbg=234 ctermfg=248 cterm=bold
-hi StatusLineNC ctermbg=234 ctermfg=242 cterm=NONE
-hi VertSplit ctermfg=0 ctermbg=103
+hi ColorColumn guibg=#16181d
+hi CursorLine guibg=#16181d
+hi CursorLineNR guibg=NONE
+hi LineNR guibg=NONE
+hi StatusLine guibg=NONE
+hi VertSplit guibg=NONE
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"

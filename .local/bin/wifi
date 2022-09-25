@@ -1,0 +1,7 @@
+#!/bin/sh
+
+$key="$(connmanctl services | awk '{print $1}' | dmenu -l 20 -p 'Select WIFI Network')"
+
+$net="$(connmanctl services | grep "$key")"
+
+connmanctl connect "$net"

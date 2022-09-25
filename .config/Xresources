@@ -1,5 +1,76 @@
-*font:  mono:pixelsize=12
-*.font: mono:pixelsize=12
+#define fg #bbc2cf
+#define bg #16181d
+#define cr #69ace9
+
+#define kolor0 #000000
+#define kolor1 #ff6c6b
+#define kolor2 #98be65
+#define kolor3 #ecbe7b
+#define kolor4 #a9a1e1
+#define kolor5 #c678dd
+#define kolor6 #51afef
+#define kolor7 #bbc2cf
+#define kolor8 #000000
+#define kolor9 #ff6655
+#define kolor10 #99bb66
+#define kolor11 #ecbe7b
+#define kolor12 #a9a1e1
+#define kolor13 #c678dd
+#define kolor14 #51afef
+#define kolor15 #bfbfbf
+
+*foreground:   fg
+*background:   bg
+*borderColor:  bg
+*cursorColor:  cr
+*.foreground:  fg
+*.background:  bg
+*.borderColor: bg
+*.cursorColor: cr
+
+*color0:   kolor0
+*color1:   kolor1
+*color2:   kolor2
+*color3:   kolor3
+*color4:   kolor4
+*color5:   kolor5
+*color6:   kolor6
+*color7:   kolor7
+*color8:   kolor8
+*color9:   kolor9
+*color10:  kolor10
+*color11:  kolor11
+*color12:  kolor12
+*color13:  kolor13
+*color14:  kolor14
+*color15:  kolor15
+*color256: cr
+*color257: cr
+*color258: bg
+*color259: fg
+
+*.color0:   kolor0
+*.color1:   kolor1
+*.color2:   kolor2
+*.color3:   kolor3
+*.color4:   kolor4
+*.color5:   kolor5
+*.color6:   kolor6
+*.color7:   kolor7
+*.color8:   kolor8
+*.color9:   kolor9
+*.color10:  kolor10
+*.color11:  kolor11
+*.color12:  kolor12
+*.color13:  kolor13
+*.color14:  kolor14
+*.color15:  kolor15
+*.color256: fg
+*.color257: bg
+*.color258: cr
+*.color259: fg
+*font:  mono:pixelsize=14
+*.font: mono:pixelsize=14
 
 Xft.autohint: 0
 Xft.antialias: 1
@@ -9,19 +80,60 @@ Xft.dpi: 96
 Xft.rgba: rgb
 Xft.lcdfilter: lcdlight
 
+!! dwm
+dwm.font:             monospace:pixelsize=12
+dwm.normbgcolor:      bg
+dwm.normbordercolor:  bg
+dwm.normfgcolor:      fg
+dwm.selbgcolor:       bg
+dwm.selbordercolor:   cr
+dwm.selfgcolor:       cr
+dwm.borderpx:         2
+dwm.snap:             32
+dwm.gappx:            20
+dwm.showbar:          1
+dwm.topbar:           1
+dwm.nmaster:          1
+dwm.resizehints:      0
+dwm.lockfullscreen:   1
+dwm.swallowfloating:  0
+dwm.mfact:            0.55
+
+!! dmenu
+dmenu.font:           monospace:pixelsize=16
+dmenu.normbgcolor:    bg
+dmenu.normfgcolor:    fg
+dmenu.selbgcolor:     bg
+dmenu.selfgcolor:     cr
+dmenu.min_width:      500
+dmenu.border_width:   3
+dmenu.centered:       1
+dmenu.fuzzy:          1
+dmenu.topbar:         1
+dmenu.lineheight:     10
+dmenu.min_lineheight: 10
+
+!! st
+st.borderpx: 10
+st.alpha:    0.93
+st.cwscale:  1.0
+st.chscale:  1.1
 
 !! herbe
-herbe.font_pattern:     mono:pixelsize=14
+herbe.font_pattern:     serif:size=12
+herbe.background_color: bg
+herbe.border_color:     cr
+herbe.font_color:       fg
 herbe.line_spacing:     5
 herbe.padding:          12
-herbe.width:            200
+herbe.width:            300
 herbe.border_size:      2
 herbe.pos_x:            12
 herbe.pos_y:            34
 ! 0 = TOP_LEFT, 1 = TOP_RIGHT, 2 = BOTTOM_LEFT, 3 = BOTTOM_RIGHT
 herbe.corner:   1
-herbe.duration: 5
+herbe.duration: 3
 
 !! sxiv
-sxiv.background: 0
-sxiv.foreground: 7
+sxiv.background: bg
+sxiv.foreground: fg

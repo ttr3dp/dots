@@ -5,9 +5,9 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 
 # XDG
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export READER="zathura"
-export FILE="fff"
+export FILE="lf"
 export BROWSER="librewolf"
 export BROWSERCLI="w3m"
 
@@ -25,7 +25,8 @@ export XAUTHORITY="$XDG_DATA_HOME/Xauthority"
 
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="$XDG_CONFIG_HOME/asdf/tool-versions"
+export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=".config/asdf/tool-versions"
+export ASDF_GEM_DEFAULT_PACKAGES_FILE="$XDG_CONFIG_HOME/asdf/default-gems"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
