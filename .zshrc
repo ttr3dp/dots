@@ -28,7 +28,6 @@ export FFF_STAT_CMD="stat"
 export FFF_CD_ON_EXIT=1
 export FFF_TRASH=""
 export FFF_TRASH_CMD="rm -rf"
-export ASDF_DIR="${HOME}/code/asdf"
 
 # Set prompt
 autoload -Uz promptinit && promptinit
@@ -52,8 +51,6 @@ setopt prompt_subst
 export PS1='%{%F{4}%}%0~${vcs_info_msg_0_}$nl%F{10}\$ %{$reset_color%}'
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
-
-fpath=(${ASDF_DIR}/completions $fpath)
 
 # COMPLETION (figuring out what I like):
 autoload -U compinit
@@ -153,9 +150,6 @@ else
   fi
 fi'
 
-# asdf
-. $HOME/code/asdf/asdf.sh
-
 # fzf
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -214,12 +208,8 @@ alias tconf="${EDITOR} ~/.config/tmux/tmux.conf"
 alias fconf="${EDITOR} ~/.config/fontconfig/fonts.conf"
 # Dotfiles
 alias dots="/usr/bin/git --git-dir=${HOME}/code/dots/ --work-tree=${HOME}"
-# Alacritty
-alias alconf="${EDITOR} ${XDG_CONFIG_HOME}/alacritty/alacritty.yml"
-# Neomutt
-alias mailconf="${EDITOR} ${XDG_CONFIG_HOME}/mutt/accounts/*.muttrc"
-# W3M
-alias w3m="w3m -c ${XDG_CONFIG_HOME}/w3m/config"
+# tremc (ignore transmission version mismatch)
+alias tremc="tremc -X"
 
 # docker compose
 alias dc="docker-compose"
