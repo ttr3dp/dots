@@ -1,23 +1,82 @@
-#define fg #bbc2cf
-#define bg #16181d
-#define cr #69ace9
+/* #define fg #bcbcbc */
+/* #define bg #1c1c1c */
+/* #define cr #87af87 */
 
-#define kolor0 #000000
-#define kolor1 #ff6c6b
-#define kolor2 #98be65
-#define kolor3 #ecbe7b
-#define kolor4 #a9a1e1
-#define kolor5 #c678dd
-#define kolor6 #51afef
-#define kolor7 #bbc2cf
-#define kolor8 #000000
-#define kolor9 #ff6655
-#define kolor10 #99bb66
-#define kolor11 #ecbe7b
-#define kolor12 #a9a1e1
-#define kolor13 #c678dd
-#define kolor14 #51afef
-#define kolor15 #bfbfbf
+/* #define kolor0 #1c1c1c */
+/* #define kolor1 #d75f5f */
+/* #define kolor2 #87af87 */
+/* #define kolor3 #afaf87 */
+/* #define kolor4 #5f87af */
+/* #define kolor5 #af87af */
+/* #define kolor6 #5f8787 */
+/* #define kolor7 #9e9e9e */
+/* #define kolor8 #767676 */
+/* #define kolor9 #d7875f */
+/* #define kolor10 #afd7af */
+/* #define kolor11 #d7d787 */
+/* #define kolor12 #87afd7 */
+/* #define kolor13 #d7afd7 */
+/* #define kolor14 #87afaf */
+/* #define kolor15 #bcbcbc */
+
+/* Noctis */
+/* ! special */
+/* #define fg   #fff8f8 */
+/* #define bg   #141414 */
+/* #define cr   #33b1ff */
+
+/* ! black */
+/* #define kolor0       #282a3a */
+/* #define kolor8       #696d77 */
+
+/* ! red */
+/* #define kolor1       #e66533 */
+/* #define kolor9       #e66533 */
+
+/* ! green */
+/* #define kolor2       #16b673 */
+/* #define kolor10      #16b673 */
+
+/* ! yellow */
+/* #define kolor3       #49e9a6 */
+/* #define kolor11      #49e9a6 */
+
+/* ! blue */
+/* #define kolor4       #33b1ff */
+/* #define kolor12      #33b1ff */
+
+/* ! magenta */
+/* #define kolor5       #df769b */
+/* #define kolor13      #df769b */
+
+/* ! cyan */
+/* #define kolor6       #e4b781 */
+/* #define kolor14      #e4b781 */
+
+/* ! white */
+/* #define kolor7       #eaf2f1 */
+/* #define kolor15      #eaf2f1 */
+
+/* Guber-darker */
+#define fg   #cbcbcb
+#define bg   #181818
+#define cr  #c5c8c6
+#define kolor0       #282a2e
+#define kolor8       #373b41
+#define kolor1       #a54242
+#define kolor9       #cc6666
+#define kolor2       #8c9440
+#define kolor10      #b5bd68
+#define kolor3       #de935f
+#define kolor11      #f0c674
+#define kolor4       #5f819d
+#define kolor12      #81a2be
+#define kolor5       #85678f
+#define kolor13      #b294bb
+#define kolor6       #5e8d87
+#define kolor14      #8abeb7
+#define kolor7       #707880
+#define kolor15      #c5c8c6
 
 *foreground:   fg
 *background:   bg
@@ -115,7 +174,7 @@ dmenu.min_lineheight: 10
 
 !! st
 st.borderpx: 10
-st.alpha:    0.93
+st.alpha:    0.94
 st.cwscale:  1.0
 st.chscale:  1.1
 
