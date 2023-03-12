@@ -60,7 +60,7 @@
 /* Guber-darker */
 #define fg   #cbcbcb
 #define bg   #181818
-#define cr  #c5c8c6
+#define cr  #55a803
 #define kolor0       #282a2e
 #define kolor8       #373b41
 #define kolor1       #a54242
@@ -128,8 +128,8 @@
 *.color257: bg
 *.color258: cr
 *.color259: fg
-*font:  mono:pixelsize=14
-*.font: mono:pixelsize=14
+*font:  mono:pixelsize=18
+*.font: mono:pixelsize=18
 
 Xft.autohint: 0
 Xft.antialias: 1
