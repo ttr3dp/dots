@@ -23,6 +23,7 @@ export XDG_VIDEOS_DIR="$HOME/vids"
 
 export XAUTHORITY="$XDG_DATA_HOME/Xauthority"
 
+export ASDF_DIR="$HOME/code/asdf"
 export ASDF_CONFIG_FILE="$XDG_CONFIG_HOME/asdf/asdfrc"
 export ASDF_DATA_DIR="$XDG_DATA_HOME/asdf"
 export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=".config/asdf/tool-versions"
