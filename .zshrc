@@ -22,12 +22,11 @@ export CLICOLOR=1
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-export FFF_HIDDEN=1
-export FFF_OPENER="xdg-open"
-export FFF_STAT_CMD="stat"
-export FFF_CD_ON_EXIT=1
-export FFF_TRASH=""
-export FFF_TRASH_CMD="rm -rf"
+if [ -f "$ASDF_DIR/asdf.sh" ]; then
+    . "$ASDF_DIR/asdf.sh"
+else
+    printf 'asdf not installed!\n'
+fi
 
 # Set prompt
 autoload -Uz promptinit && promptinit
@@ -53,6 +52,13 @@ autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
 
 # COMPLETION (figuring out what I like):
+
+# append completions to fpath
+
+[ -d "$ASDF_DIR/completions" ] && {
+    fpath=(${ASDF_DIR}/completions $fpath)
+}
+
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -154,10 +160,20 @@ fi'
 export FZF_COMPLETION_TRIGGER=',,'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS="--reverse"
-. /usr/share/fzf/completion.zsh
-. /usr/share/fzf/key-bindings.zsh
 
-. /usr/share/z/z.sh
+if [ -d /usr/share/fzf ]; then
+    . /usr/share/fzf/completion.zsh
+    . /usr/share/fzf/key-bindings.zsh
+else
+    printf 'FZF completions and key bindings cannot be found in /usr/share/fzf\n'
+fi
+
+if [ -d /usr/share/z ]; then
+    . /usr/share/z/z.sh
+else
+    printf 'rupa/z cannot be found in /usr/share/z\n'
+fi
+
 
 # GPG
 export GPG_TTY=$(tty)
