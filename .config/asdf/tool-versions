@@ -1,6 +1,6 @@
-ruby 3.1.2
-elixir 1.11
-erlang 23.1
-nodejs 18.7.0
+ruby 3.2.1
+elixir 1.14.3-otp-25
+erlang 25.3
+nodejs 19.7.0
 
-crystal 0.36.1
+crystal 1.7.3
