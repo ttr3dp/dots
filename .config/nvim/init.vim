@@ -9,6 +9,14 @@ let g:loaded_remote_plugins = 1
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
+" Install vim-plug if not found
+if empty(glob("$XDG_DATA_HOME/nvim/site/autoload/plug.vim"))
+  silent !curl -fLo
+        \ "$XDG_DATA_HOME/nvim/site/autoload/plug.vim"
+        \ --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'blazkowolf/gruber-darker.nvim'
 Plug 'tpope/vim-repeat'
@@ -140,8 +148,11 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Make sure these extensions are installed out of the box
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html', 'coc-solargraph', 'coc-sh', 'coc-markdownlint', 'coc-lua']
 " }}}
+
 augroup MyAutoCmds
   au!
   " when editing a file, always jump to the last known cursor position,
@@ -158,7 +169,7 @@ augroup MyAutoCmds
   au BufRead,BufNewFile Wagonfile,Gemfile,.pryrc,Vagrantfile setl ft=ruby
 
   au FileType ruby nnoremap <buffer><silent><leader>p orequire "pry"; binding.pry<esc>
-  au FileType sh setl ts=4 sw=4
+  au FileType sh,zsh setl ts=4 sw=4
   au FileType vim setl foldenable foldmethod=marker foldlevelstart=0
   au FileType c,cpp setl sw=2 ts=2 noexpandtab
   au FileType crystal setl makeprg=crystal\ build\ %\ --no-color
