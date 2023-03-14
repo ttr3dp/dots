@@ -140,6 +140,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html', 'coc-solargraph', 'coc-sh', 'coc-markdownlint', 'coc-lua']
 " }}}
 augroup MyAutoCmds
   au!
@@ -203,6 +204,7 @@ hi DiffDelete guifg=#f43841
 hi DiffChange guifg=#ffdd33
 hi Folded guibg=#282828
 hi diffRemoved guifg=#f43841
+hi EndOfBuffer guibg=NONE
 " hi StatusLine guibg=#262626 guifg=#cc8b66
 " hi CursorLine guibg=#262626
 " hi WinSeparator ctermfg=250 ctermbg=234 guifg=#282828 guibg=#1c1c1c
