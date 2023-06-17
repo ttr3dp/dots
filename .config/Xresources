@@ -1,82 +1,23 @@
-/* #define fg #bcbcbc */
-/* #define bg #1c1c1c */
-/* #define cr #87af87 */
+#define fg #f8f8f8
+#define bg #262335
+#define cr #FFCC00
 
-/* #define kolor0 #1c1c1c */
-/* #define kolor1 #d75f5f */
-/* #define kolor2 #87af87 */
-/* #define kolor3 #afaf87 */
-/* #define kolor4 #5f87af */
-/* #define kolor5 #af87af */
-/* #define kolor6 #5f8787 */
-/* #define kolor7 #9e9e9e */
-/* #define kolor8 #767676 */
-/* #define kolor9 #d7875f */
-/* #define kolor10 #afd7af */
-/* #define kolor11 #d7d787 */
-/* #define kolor12 #87afd7 */
-/* #define kolor13 #d7afd7 */
-/* #define kolor14 #87afaf */
-/* #define kolor15 #bcbcbc */
-
-/* Noctis */
-/* ! special */
-/* #define fg   #fff8f8 */
-/* #define bg   #141414 */
-/* #define cr   #33b1ff */
-
-/* ! black */
-/* #define kolor0       #282a3a */
-/* #define kolor8       #696d77 */
-
-/* ! red */
-/* #define kolor1       #e66533 */
-/* #define kolor9       #e66533 */
-
-/* ! green */
-/* #define kolor2       #16b673 */
-/* #define kolor10      #16b673 */
-
-/* ! yellow */
-/* #define kolor3       #49e9a6 */
-/* #define kolor11      #49e9a6 */
-
-/* ! blue */
-/* #define kolor4       #33b1ff */
-/* #define kolor12      #33b1ff */
-
-/* ! magenta */
-/* #define kolor5       #df769b */
-/* #define kolor13      #df769b */
-
-/* ! cyan */
-/* #define kolor6       #e4b781 */
-/* #define kolor14      #e4b781 */
-
-/* ! white */
-/* #define kolor7       #eaf2f1 */
-/* #define kolor15      #eaf2f1 */
-
-/* Guber-darker */
-#define fg   #cbcbcb
-#define bg   #181818
-#define cr  #55a803
-#define kolor0       #282a2e
-#define kolor8       #373b41
-#define kolor1       #a54242
-#define kolor9       #cc6666
-#define kolor2       #8c9440
-#define kolor10      #b5bd68
-#define kolor3       #de935f
-#define kolor11      #f0c674
-#define kolor4       #5f819d
-#define kolor12      #81a2be
-#define kolor5       #85678f
-#define kolor13      #b294bb
-#define kolor6       #5e8d87
-#define kolor14      #8abeb7
-#define kolor7       #707880
-#define kolor15      #c5c8c6
+#define kolor0 #241b2f
+#define kolor1 #fe4450
+#define kolor2 #72f1b8
+#define kolor3 #ff8b39
+#define kolor4 #5966b5
+#define kolor5 #ff7edb
+#define kolor6 #61E2FF
+#define kolor7 #f8f8f8
+#define kolor8 #241b2f
+#define kolor9 #fe4450
+#define kolor10 #72f1b8
+#define kolor11 #FFCC00
+#define kolor12 #5966b5
+#define kolor13 #AF6DF9
+#define kolor14 #61E2FF
+#define kolor15 #f8f8f8
 
 *foreground:   fg
 *background:   bg
@@ -128,8 +69,8 @@
 *.color257: bg
 *.color258: cr
 *.color259: fg
-*font:  mono:pixelsize=18
-*.font: mono:pixelsize=18
+*font:  mono:size=16
+*.font: mono:size=16
 
 Xft.autohint: 0
 Xft.antialias: 1
@@ -140,7 +81,7 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcdlight
 
 !! dwm
-dwm.font:             monospace:pixelsize=12
+dwm.font:             monospace:style=bold:size=12
 dwm.normbgcolor:      bg
 dwm.normbordercolor:  bg
 dwm.normfgcolor:      fg
@@ -159,7 +100,7 @@ dwm.swallowfloating:  0
 dwm.mfact:            0.55
 
 !! dmenu
-dmenu.font:           monospace:pixelsize=16
+dmenu.font:           monospace:style=bold:size=20
 dmenu.normbgcolor:    bg
 dmenu.normfgcolor:    fg
 dmenu.selbgcolor:     bg
@@ -174,9 +115,9 @@ dmenu.min_lineheight: 10
 
 !! st
 st.borderpx: 10
-st.alpha:    0.94
+st.alpha:    0.98
 st.cwscale:  1.0
-st.chscale:  1.1
+st.chscale:  1.0
 
 !! herbe
 herbe.font_pattern:     serif:size=12
