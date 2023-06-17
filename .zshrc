@@ -22,6 +22,11 @@ export CLICOLOR=1
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# edit command line
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey "^O" edit-command-line
+
 if [ -f "$ASDF_DIR/asdf.sh" ]; then
     . "$ASDF_DIR/asdf.sh"
 else
@@ -39,7 +44,7 @@ zstyle ':vcs_info:*' stagedstr '%F{yellow}+'  # display this when there are stag
 zstyle ':vcs_info:*' actionformats \
   ' %F{8}on %F{9}ᝄ %F{5}%b%F{99}|%F{1}%a%c%u%f'
 zstyle ':vcs_info:*' formats       \
-    ' %F{8}on %F{9}ᝄ %F{5}%b%c%u%f'
+    ' %F{8}on %F{9} %F{5}%b%c%u%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat ' %b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn
 theme_precmd () {
@@ -51,110 +56,10 @@ export PS1='%{%F{4}%}%0~${vcs_info_msg_0_}$nl%F{10}\$ %{$reset_color%}'
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
 
-# COMPLETION (figuring out what I like):
-
-# append completions to fpath
-
-[ -d "$ASDF_DIR/completions" ] && {
-    fpath=(${ASDF_DIR}/completions $fpath)
-}
-
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
-_comp_options+=(globdots)		# Include hidden files.
-# start menu completion only if it could find no unambiguous initial string
-zstyle ':completion:*:correct:*'       insert-unambiguous true
-zstyle ':completion:*:corrections'     format $'%{\e[0;31m%}%d (errors: %e)%{\e[0m%}'
-zstyle ':completion:*:correct:*'       original true
-
-# activate color-completion
-zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
-
-# automatically complete 'cd -<tab>' and 'cd -<ctrl-d>' with menu
-# zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
-
-# insert all expansions for expand completer
-zstyle ':completion:*:expand:*'        tag-order all-expansions
-zstyle ':completion:*:history-words'   list false
-
-# activate menu
-zstyle ':completion:*:history-words'   menu yes
-
-# ignore duplicate entries
-zstyle ':completion:*:history-words'   remove-all-dups yes
-zstyle ':completion:*:history-words'   stop yes
-
-zstyle ':completion:*:messages'        format '%d'
-zstyle ':completion:*:options'         auto-description '%d'
-
-# describe options in full
-zstyle ':completion:*:options'         description 'yes'
-
-# on processes completion complete all user processes
-zstyle ':completion:*:processes'       command 'ps -au$USER'
-
-# offer indexes before parameters in subscripts
-zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-
-# provide verbose completion information
-zstyle ':completion:*'                 verbose true
-
-# recent (as of Dec 2007) zsh versions are able to provide descriptions
-# for commands (read: 1st word in the line) that it will list for the user
-# to choose from. The following disables that, because it's not exactly fast.
-zstyle ':completion:*:-command-:*:'    verbose false
-
-# define files to ignore for zcompile
-zstyle ':completion:*:*:zcompile:*'    ignored-patterns '(*~|*.zwc)'
-zstyle ':completion:correct:'          prompt 'correct to: %e'
-
-# Ignore completion functions for commands you don't have:
-zstyle ':completion::(^approximate*):*:functions' ignored-patterns '_*'
-
-# Provide more processes in completion of programs like killall:
-zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uniq'
-
-# complete manual by their section
-zstyle ':completion:*:manuals'    separate-sections true
-zstyle ':completion:*:manuals.*'  insert-sections   true
-zstyle ':completion:*:man:*'      menu yes select
-
-# Search path for sudo completion
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
-                                            /usr/local/bin  \
-                                            /usr/sbin       \
-                                            /usr/bin        \
-                                            /sbin           \
-                                            /bin            \
-                                            /usr/X11R6/bin
-
-# match uppercase from lowercase
-zstyle ':completion:*'                 matcher-list 'm:{a-z}={A-Z}'
-
-# separate matches into groups
-zstyle ':completion:*:matches'         group 'yes'
-zstyle ':completion:*'                 group-name ''
-
-function _force_rehash () {
-  (( CURRENT == 1 )) && rehash
-  return 1
-}
-
-# try to be smart about when to use what completer...
-setopt correct
-zstyle -e ':completion:*' completer '
-if [[ $_last_try != "$HISTNO$BUFFER$CURSOR" ]] ; then
-  _last_try="$HISTNO$BUFFER$CURSOR"
-  reply=(_complete _match _ignored _prefix _files)
-else
-  if [[ $words[1] == (rm|mv) ]] ; then
-    reply=(_complete _files)
-  else
-    reply=(_oldlist _expand _force_rehash _complete _ignored _correct _approximate _files)
-  fi
-fi'
+# completion
+autoload -U compinit; compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:default' menu select=1
 
 # fzf
 export FZF_COMPLETION_TRIGGER=',,'
