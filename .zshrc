@@ -217,7 +217,7 @@ alias xconf="${EDITOR} ${XDG_CONFIG_HOME}/Xresources"
 alias shconf="${EDITOR} ${HOME}/.zshrc"
 # Neovim
 alias nvimconf="${EDITOR} ~/.config/nvim/init.vim"
-alias vimconf="${EDITOR} ~/.config/nvim/init.vim"
+alias vimconf="${EDITOR} ~/.config/nvim/lua/ttr3dp/init.lua"
 # tmux
 alias tconf="${EDITOR} ~/.config/tmux/tmux.conf"
 # Fonts
