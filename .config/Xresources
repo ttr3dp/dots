@@ -1,5 +1,7 @@
 #define fg #f8f8f8
-#define bg #262335
+#define bg #15131f
+
+/* #define bg #111417 */
 #define cr #FFCC00
 
 #define kolor0 #241b2f
@@ -115,7 +117,7 @@ dmenu.min_lineheight: 10
 
 !! st
 st.borderpx: 10
-st.alpha:    0.98
+st.alpha:    0.97
 st.cwscale:  1.0
 st.chscale:  1.0
 
