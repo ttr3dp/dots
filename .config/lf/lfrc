@@ -1,6 +1,7 @@
 set shell zsh
 set shellopts '-euy'
 set ifs "\n"
+set icons
 
 cmd delete ${{
     set -f

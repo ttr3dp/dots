@@ -71,8 +71,8 @@
 *.color257: bg
 *.color258: cr
 *.color259: fg
-*font:  mono:size=16
-*.font: mono:size=16
+*font:  mono:size=18
+*.font: mono:size=18
 
 Xft.autohint: 0
 Xft.antialias: 1
@@ -83,7 +83,7 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcdlight
 
 !! dwm
-dwm.font:             monospace:style=bold:size=12
+dwm.font:             monospace:style=bold:size=13
 dwm.normbgcolor:      bg
 dwm.normbordercolor:  bg
 dwm.normfgcolor:      fg
@@ -102,7 +102,7 @@ dwm.swallowfloating:  0
 dwm.mfact:            0.55
 
 !! dmenu
-dmenu.font:           monospace:style=bold:size=20
+dmenu.font:           monospace:style=bold:size=23
 dmenu.normbgcolor:    bg
 dmenu.normfgcolor:    fg
 dmenu.selbgcolor:     bg
@@ -116,10 +116,10 @@ dmenu.lineheight:     10
 dmenu.min_lineheight: 10
 
 !! st
-st.borderpx: 10
+st.borderpx: 19
 st.alpha:    0.97
 st.cwscale:  1.0
-st.chscale:  1.0
+st.chscale:  1.1
 
 !! herbe
 herbe.font_pattern:     serif:size=12

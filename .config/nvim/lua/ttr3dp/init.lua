@@ -5,7 +5,7 @@ vim.g.loaded_tar = 1
 vim.g.loaded_tarPlugin = 1
 
 vim.g.loaded_getscript = 1
-vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_getscriptPlugin = 2
 vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_2html_plugin = 1
@@ -18,7 +18,6 @@ vim.g.loaded_rrhelper = 1
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
-
 require('ttr3dp.options')
 require('ttr3dp.keymaps')
 require('ttr3dp.plugins')
@@ -43,4 +42,5 @@ fm.setup {
 
 vim.cmd.colorscheme('fluoromachine')
 
-vim.cmd.highlight([[CursorLine guibg=#241b2f]])
+vim.cmd.highlight([[CursorLine guibg=#15131f]])
+vim.cmd.highlight([[ColorColumn guibg=#15131f]])
