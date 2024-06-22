@@ -1,6 +1,0 @@
-#!/bin/sh
-
-case $1 in
-    ram) printf "  Memory hogs:\n$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
-    cpu) printf "  CPU hogs:\n$(ps axch -o cmd:15,%cpu --sort=-%cpu | head)" ;;
-esac

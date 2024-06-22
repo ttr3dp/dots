@@ -1,1 +1,0 @@
-pulsemixer --change-volume "${@}" && notify-send "VOL: "$(pulsemixer --get-volume | awk '{print $1}')""

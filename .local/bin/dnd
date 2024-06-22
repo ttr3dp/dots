@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Do not disturb
-notify-send -i "" "DUNST_COMMAND_TOGGLE"

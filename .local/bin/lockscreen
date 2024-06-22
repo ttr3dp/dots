@@ -1,7 +1,0 @@
-#!/bin/bash
-# Pause music
-cmus-remote -U
-
-# DND dunst
-xset dpms force off
-i3lock -n -e -f -c "$(get_color 0)"
