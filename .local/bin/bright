@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# Requires udev rule and that user belongs to video group:
+# /etc/udev/rules.d/backlight.rules
+# ACTION=="add", SUBSYSTEM=="backlight", RUN+="/bin/chgrp video $sys$devpath/brightness", RUN+="/bin/chmod g+w $sys$devpath/brightness"
+
+syspath="/sys/class/backlight/intel_backlight"
+max="$(cat "${syspath}/max_brightness")"
+current="$(cat "$syspath/brightness")"
+last_id_cache="/tmp/last_bright_not_id"
+
+current_perc="$((current * 100 / max))"
+
+case "$@" in
+    +*)
+        incr="$(printf '%s' "$@" | tr -d '+')"
+        new_perc="$((current_perc + incr))"
+        [ "$new_perc" -gt 100 ] && new_perc=100
+        ;;
+    -*)
+        decr="$(printf '%s' "$@" | tr -d '-')"
+        new_perc="$((current_perc - decr))"
+        [ "$new_perc" -lt 0 ] && new_perc=0
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+new_val="$((max * new_perc / 100))"
+
+[ ! -e "$last_id_cache" ] && printf "%s" "$(date +%s)" > "$last_id_cache"
+
+not_id="$(cat "$last_id_cache")"
+
+printf '%s' "$new_val" > "$syspath/brightness" && notify-send -r "$not_id" "󰃠 Brightness: ${new_perc}%"

@@ -1,0 +1,9 @@
+#!/bin/sh
+query="$(cmus-remote -Q 2> /dev/null)"
+artist="$(printf '%s\n' "$query" | grep 'tag artist ' | sed 's/tag artist //g')"
+track="$(printf '%s\n' "$query" | grep 'tag title ' | sed 's/tag title //g')"
+# album="$(printf '%s\n' "$query" | grep 'tag album ' | sed 's/tag album //g')"
+# year="$(printf '%s\n' "$query" | grep 'tag date ' | sed 's/tag date //g')"
+# nr="$(printf '%s\n' "$query" | grep 'tag tracknumber' | sed 's/tag tracknumber //g')"
+
+[ ! -z "$query"  ] && printf '🤘 %s - %s\n' "$artist" "$track"

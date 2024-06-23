@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+def process(source_dir, dest_dir)
+  puts "Making destination dir #{dest_dir}"
+  `mkdir -p "#{dest_dir}"` unless Dir.exist?("\"#{dest_dir}\"")
+
+  Dir.entries(source_dir).sort.each do |entry|
+    next if entry == "."
+    next if entry == ".."
+
+    src_entry_path = File.join(source_dir, entry)
+    dest_entry_path = File.join(dest_dir, entry)
+
+    if File.directory?(src_entry_path)
+      puts "Making dir #{dest_entry_path}"
+      `mkdir -p "#{dest_entry_path}"` unless Dir.exist?("\"#{dest_entry_path}\"")
+      process(src_entry_path, dest_entry_path)
+    else
+      puts "Copying \"#{src_entry_path}\" -> \"#{dest_entry_path}\""
+      `cp --no-preserve=timestamps \"#{src_entry_path}\" \"#{dest_entry_path}\"`
+    end
+  end
+end
+
+process(File.expand_path(ARGV[0]), File.expand_path(ARGV[1]))
