@@ -1,10 +1,19 @@
 Dotfiles
---------
+------------
 
 Config files.
 
+
+Installation
+------------
+
+$ git clone {{THIS_REPO}}
+$ cd dots
+$ ./install.sh
+
+
 Software
---------
+------------
 
  OS:               https://www.archlinux.org/
  Window manager:   https://hyprland.org/
