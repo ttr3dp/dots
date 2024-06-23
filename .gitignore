@@ -1,0 +1,2 @@
+.local/share/gnupg/*
+!.local/share/gnupg/gpg-agent.conf
