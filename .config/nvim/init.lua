@@ -62,6 +62,10 @@ require('vim-plug').add({
     [[ { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} ]]
   },
 
+  -- icon picker
+  'stevearc/dressing.nvim',
+  'ziontee113/icon-picker.nvim',
+
   -- file browser
   'stevearc/oil.nvim',
 
@@ -356,6 +360,11 @@ vim.api.nvim_create_autocmd("TermOpen", {
 require('oil').setup({})
 
 vim.keymap.set('n', '-', require("oil").open, { desc = "Open parent directory" })
+-- }}}
+
+-- [[ ICON PICKER ]] {{{
+  require('dressing').setup({})
+  require("icon-picker").setup({ disable_legacy_commands = true })
 -- }}}
 
 --  [[ FUZZY FINDER ]]  {{{
