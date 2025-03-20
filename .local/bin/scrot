@@ -1,7 +1,0 @@
-#!/bin/sh
-
-path="${HOME}/desk/Screenshot "$(date +%Y-%m-%d\ at\ %H.%M.%S)".png"
-
-slurp | grim -g - "$path" && resp="$(notify-send -i "$path" --action="Open" "󰹑 Screenshot taken!")"
-
-[ ! -z "$resp" ] && xdg-open "$path"

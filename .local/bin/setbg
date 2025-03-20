@@ -2,4 +2,4 @@
 # Sets the background. If given an argument, will set file as background.
 [ -f "$1" ] && cp "$1" ~/.config/wall.png && notify-send -i ~/.config/wall.png "$HOME/.config/wall.png" "Wallpaper changed."
 
-swaybg -i ~/.config/wall.png -m fill &
+feh --no-fehbg --bg-fill ~/.config/wall.png

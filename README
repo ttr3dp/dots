@@ -5,39 +5,3 @@
 | My config files.           |
 |                            |
 +----------------------------+
-
-
-+-----------------+
-| HOW TO INSTALL? |
-+-----------------+----------+
-|                            |
-| $ git clone {{THIS_REPO}}  |
-| $ cd dots                  |
-| $ ./install.sh             |
-|                            |
-+----------------------------+
-
-
-+-------------+
-| WHAT I USE? |
-+-------------+------------------------------------------------------------------------------+
-|                                                                                            |
-| OS:               https://www.archlinux.org/                                               |
-| Window manager:   https://hyprland.org/                                                    |
-| Statusbar:        https://github.com/scorpion-26/gBar                                      |
-| Terminal:         https://codeberg.org/dnkl/foot                                           |
-| Launcher:         https://codeberg.org/dnkl/fuzzel                                         |
-| Shell:            http://zsh.sourceforge.net/                                              |
-| Editor:           https://neovim.io/                                                       |
-| Video player:     https://mpv.io/                                                          |
-| Music player:     https://cmus.github.io/                                                  |
-| TUI File manager: https://github.com/gokcehan/lf                                           |
-| GUI File manager: https://github.com/lxqt/pcmanfm-qt                                       |
-| Web browser       https://librewolf-community.gitlab.io/                                   |
-| PDF viewer:       https://pwmt.org/projects/zathura/                                       |
-| Image viewer:     https://github.com/karlch/vimiv                                          |
-| Fonts:            https://git.sr.ht/~ttr3dp/dots/blob/master/.config/fontconfig/fonts.conf |
-| Notifications:    https://github.com/dunst-project/dunst                                   |
-| Torrent client:   https://github.com/tremc/tremc                                           |
-|                                                                                            |
-+--------------------------------------------------------------------------------------------+
