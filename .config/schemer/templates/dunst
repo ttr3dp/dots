@@ -1,0 +1,18 @@
+//OUTPUT=$XDG_CONFIG_HOME/dunst/dunstrc.d/99-dunst-colors.conf
+[global]
+    frame_color = "{accent}"
+    highlight = "{accent}"
+
+[urgency_low]
+    background = "{background}"
+    foreground = "{foreground}"
+
+[urgency_normal]
+    background = "{background}"
+    foreground = "{foreground}"
+
+[urgency_critical]
+    background = "{background}"
+    foreground = "{foreground}"
+    frame_color = "{color1}"
+

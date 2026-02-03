@@ -1,0 +1,20 @@
+//OUTPUT=$XDG_CONFIG_HOME/x11/xresources.colors
+#define colbg {background}
+#define colfg {foreground}
+#define colcur {accent}
+#define col0  {color0}
+#define col1  {color1}
+#define col2  {color2}
+#define col3  {color3}
+#define col4  {color4}
+#define col5  {color5}
+#define col6  {color6}
+#define col7  {color7}
+#define col8  {color8}
+#define col9  {color9}
+#define col10 {color10}
+#define col11 {color11}
+#define col12 {color12}
+#define col13 {color13}
+#define col14 {color14}
+#define col15 {color15}

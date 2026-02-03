@@ -1,0 +1,108 @@
+#include "xresources.colors"
+
+Xft.dpi: 144
+
+Xcursor.theme: BreezeX-Black
+Xcursor.size: 32
+
+*foreground:  colfg
+*background:  colbg
+*borderColor: colbg
+*cursorColor: colcur
+*.foreground: colfg
+*.background: colbg
+*.borderColor: colbg
+*.cursorColor: colcur
+
+*color0:   col0
+*color1:   col1
+*color2:   col2
+*color3:   col3
+*color4:   col4
+*color5:   col5
+*color6:   col6
+*color7:   col7
+*color8:   col8
+*color9:   col9
+*color10:  col10
+*color11:  col11
+*color12:  col12
+*color13:  col13
+*color14:  col14
+*color15:  col15
+*color256: colcur
+*color257: colcur
+*color258: colbg
+*color259: colfg
+
+*.color0:   col0
+*.color1:   col1
+*.color2:   col2
+*.color3:   col3
+*.color4:   col4
+*.color5:   col5
+*.color6:   col6
+*.color7:   col7
+*.color8:   col8
+*.color9:   col9
+*.color10:  col10
+*.color11:  col11
+*.color12:  col12
+*.color13:  col13
+*.color14:  col14
+*.color15:  col15
+*.color256: colfg
+*.color257: colbg
+*.color258: colcur
+*.color259: colfg
+
+!! dwm
+dwm.font: Symbols Nerd Font:size=20
+dwm.font2: monospace:size=14
+dwm.gappx: 40
+dwm.borderpx: 3
+dwm.snap: 32
+dwm.swallowfloating: 0
+dwm.showbar: 1
+dwm.topbar: 0
+dwm.horizpadbar: 20
+dwm.vertpadbar: 20
+dwm.showsystray: 1
+dwm.systraypinning: 0
+dwm.systrayonleft: 0
+dwm.systrayspacing: 0
+dwm.systraypinningfailfirst: 1
+dwm.mfact: 0.55
+dwm.nmaster: 1
+dwm.resizehints: 1
+
+dwm.normbgcolor:     colbg
+dwm.normbordercolor: colbg
+dwm.normfgcolor:     colfg
+dwm.selbgcolor:      colbg
+dwm.selbordercolor:  colcur
+dwm.selfgcolor:      colcur
+
+!! dmenu
+dmenu.font: monospace:size=15
+dmenu.normfgcolor: colfg
+dmenu.normbgcolor: colbg
+dmenu.selfgcolor:  colfg
+dmenu.selbgcolor:  colcur
+dmenu.topbar: 1
+dmenu.fuzzy: 1
+dmenu.centered: 1
+dmenu.min_width: 600
+dmenu.menu_height_ratio: 4.0
+dmenu.lines: 10
+dmenu.lineheight: 50
+dmenu.min_lineheight: 50
+dmenu.border_width: 1
+
+!! st
+st.alpha: 0.95
+st.font: monospace:antialias=true:autohint=true:pixelsize=28
+st.borderpx: 15
+st.chscale: 1.1
+
+!! vim: ft=xdefaults
