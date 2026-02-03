@@ -1,0 +1,5 @@
+#!/bin/sh
+
+img="$XDG_DESKTOP_DIR/Screenshot-"$(date +%Y-%m-%d-%T-%S)".png"
+flameshot gui --raw  --path "$img"
+[ -f "$img" ] && notify-send -i "$img" "Screenshot taken!"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+col="$(xcolor)"
+[ -n "$col" ] && \
+   printf '%s' "$col" | xclip -selection clipboard -i && \
+   notify-send "󰢨 Copied! ${col}"

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+setxkbmap -layout us,rs -variant altgr-intl,latin -option altwin-swap_alt_win -option caps:escape -option grp:shifts_toggle
+
+xset r rate 280 40

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+$USER_OPT_DIR/LocalSend-*-linux-x86-64.AppImage

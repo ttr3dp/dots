@@ -1,0 +1,50 @@
+#!/bin/sh
+
+CONFIG_DIR="$XDG_CONFIG_HOME/schemer"
+TEMPLATES_DIR="$CONFIG_DIR/templates"
+THEMES_DIR="$CONFIG_DIR/themes"
+
+i=0
+while IFS= read -r line; do
+    [ -n "$line" ] || continue
+
+    case "$line" in
+        \#*)
+            col="$(printf '%s\n' "$line" | cut -d ' ' -f1)"
+            eval "color${i}=\"\$col\""
+            i=$(($i + 1))
+            ;;
+        *) continue ;;
+    esac
+done < "$1"
+
+for templatef in $TEMPLATES_DIR/*; do
+    [ -f "$templatef" ] || continue
+    content="$(cat "$templatef")"
+
+    outfile="$(printf '%s\n' "$content" | awk 'NR=1 && sub(/^.*OUTPUT=/, "")')"
+    [ -n "$outfile" ] || continue
+    # reaching for eval here in order to expand potential env vars in path
+    outfile="$(eval "printf '%s\n' \"$outfile\"")"
+
+    printf '%s\n' "$content" | awk 'NR > 1' | \
+        sed "s/{color0}/$color0/g;
+            s/{color1}/${color1}/g;
+            s/{color2}/${color2}/g;
+            s/{color3}/${color3}/g;
+            s/{color4}/${color4}/g;
+            s/{color5}/${color5}/g;
+            s/{color6}/${color6}/g;
+            s/{color7}/${color7}/g;
+            s/{color8}/${color8}/g;
+            s/{color9}/${color9}/g;
+            s/{color10}/${color10}/g;
+            s/{color11}/${color11}/g;
+            s/{color12}/${color12}/g;
+            s/{color13}/${color13}/g;
+            s/{color14}/${color14}/g;
+            s/{color15}/${color15}/g;
+            s/{background}/${color16}/g;
+            s/{foreground}/${color17}/g;
+            s/{accent}/${color18}/g;" > "$outfile"
+done

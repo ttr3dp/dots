@@ -1,0 +1,44 @@
+#!/bin/sh
+
+DSINK="@DEFAULT_SINK@"
+NOT_ID_CACHE="/tmp/last_vol_not_id"
+
+[ ! -e "$NOT_ID_CACHE" ] && printf "%s" "$(date +%s)" > "$NOT_ID_CACHE"
+
+NOT_ID="$(cat "$NOT_ID_CACHE")"
+
+case "$1" in
+    mute)
+        pactl set-sink-mute "$DSINK" toggle
+
+        muted="$(pactl get-sink-mute "$DSINK" | sed 's/Mute: //')"
+        case "$muted" in
+            no)  notify-send -r "$NOT_ID" "  Unmuted!";;
+            yes) notify-send -r "$NOT_ID" "  Muted!";;
+            *)   notify-send -r "$NOT_ID" "󱄡  Something went wrong!";;
+        esac
+        ;;
+    vol)
+        shift 1 # discard first agument (`vol` in this case)
+        pactl set-sink-volume "$DSINK" "${*}%"
+        vol="$(pactl get-sink-volume "$DSINK" | head -n 1 | sed 's/^.*lfe\://;' | cut -d '/' -f2 | tr -d ' ' | tr -d '%')"
+        notify-send -r "$NOT_ID"  -h int:value:$vol "󰕾  ${vol}%"
+        ;;
+    *)
+        output="$(pactl list sinks | grep Description: -B 1)"
+        selected=$(printf '%s\n' "$output" |\
+            grep Description: |\
+            awk 'BEGIN {FS=":"}; { gsub(/^\s+/, "", $2) }; { print $2 }' |\
+            dmenu -l 10 -p "Switch audio to:")
+
+        [ -n "$selected" ] && {
+            sink="$(printf '%s\n' "$output" |\
+            grep "$selected" -B 1 |\
+            head -n 1 |\
+            awk 'BEGIN {FS=":"}; { gsub(/^\s+/, "", $2) }; { print $2}')"
+
+            pactl set-default-sink "$sink" && \
+                notify-send -r "$NOT_ID" "󰓃 Switched to: ${selected}"
+        }
+        ;;
+esac
