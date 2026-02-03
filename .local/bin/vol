@@ -1,9 +1,0 @@
-#!/bin/sh
-
-last_id_cache="/tmp/last_vol_not_id"
-
-[ ! -e "$last_id_cache" ] && printf "%s" "$(date +%s)" > "$last_id_cache"
-
-not_id="$(cat "$last_id_cache")"
-
-pulsemixer --change-volume "${@}" && notify-send -r "$not_id" " Volume: "$(pulsemixer --get-volume | awk '{print $1}')""
